@@ -29,57 +29,79 @@ class ShoppingPage extends StatelessWidget {
                 builder: (controller) {
                   return ListView.builder(
                     itemBuilder: (context, index) {
-                      return Card(
-                        margin: const EdgeInsets.all(12),
-                        child: Padding(
-                          padding: EdgeInsets.all(16),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "${controller.products[index].productName}",
-                                    style: TextStyle(
-                                      fontSize: 20,
+                      return Dismissible(
+                        background: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          alignment: Alignment.centerRight,
+                          child: Icon(
+                            Icons.delete,
+                            size: 50,
+                          ),
+                        ),
+                        direction: DismissDirection.endToStart,
+                        onDismissed: (direction) {
+                          controller.deleteProduct(controller.products[index]);
+                          Get.showSnackbar(GetBar(
+                            mainButton: FlatButton.icon(
+                              onPressed: () {
+                                controller
+                                    .addProduct(controller.products[index]);
+                              },
+                              icon: Icon(Icons.undo, color: Colors.white),
+                              label: Text("UNDO", style: TextStyle(color: Colors.white),),
+                            ),
+                            messageText: Text(
+                                "${controller.products[index].productName} deleted!"),
+                            icon: Icon(Icons.delete),
+                            duration: Duration(seconds: 2),
+                            title: "Delete",
+                          ));
+                        },
+                        key: Key(controller.products[index].id.toString()),
+                        child: Card(
+                          margin: const EdgeInsets.all(12),
+                          child: Padding(
+                            padding: EdgeInsets.all(16),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "${controller.products[index].productName}",
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                      ),
                                     ),
-                                  ),
-                                  Text(
-                                    "\$${controller.products[index].price}",
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                    ),
-                                  )
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  RaisedButton(
-                                    onPressed: () {
-                                      cartController.addToCart(
-                                          controller.products[index]);
-                                    },
-                                    color: Colors.blue,
-                                    textColor: Colors.white,
-                                    child: Text("Add to Cart"),
-                                  )
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  IconButton(
-                                    icon: Icon(Icons.delete),
-                                    onPressed: () {
-                                      controller.deleteProduct(
-                                          controller.products[index]);
-                                    },
-                                  ),
-                                ],
-                              ),
-                            ],
+                                    Text(
+                                      "\$${controller.products[index].price}",
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    RaisedButton(
+                                      onPressed: () {
+                                        cartController.addToCart(
+                                            controller.products[index]);
+                                      },
+                                      color: Colors.blue,
+                                      textColor: Colors.white,
+                                      child: Text("Add to Cart"),
+                                    )
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       );
@@ -105,7 +127,9 @@ class ShoppingPage extends StatelessWidget {
           init: CartController(),
           builder: (controller) {
             return FloatingActionButton.extended(
-              onPressed: () {},
+              onPressed: () {
+                print("FAB Pressed");
+              },
               label: Text(controller.count.toString()),
               icon: Icon(Icons.shopping_cart_outlined),
             );
