@@ -18,7 +18,7 @@ class ShoppingPage extends StatelessWidget {
           actions: [
             IconButton(
               icon: Icon(Icons.add),
-              onPressed: () => Get.to(AddProduct()),
+              onPressed: () => Get.to(AddProduct(), arguments: shoppingController),
             )
           ],
         ),
