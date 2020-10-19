@@ -15,28 +15,28 @@ class ShoppingController extends GetxController {
     ProductDatabaseHelper.db
         .getProductList()
         .then((productList) => {products.value = productList});
+  }
 
-    void addProduct(Product product) {
-      ProductDatabaseHelper.db
-          .insertProduct(product)
-          .then((value) => products.add(product));
-    }
+  void addProduct(Product product) {
+    ProductDatabaseHelper.db
+        .insertProduct(product)
+        .then((value) => products.add(product));
+  }
 
-    void deleteProduct(Product product) {
-      ProductDatabaseHelper.db
-          .deleteProduct(product.id)
-          .then((_) => products.remove(product));
-    }
+  void deleteProduct(Product product) {
+    ProductDatabaseHelper.db
+        .deleteProduct(product.id)
+        .then((_) => products.remove(product));
+  }
 
-    void update(Product product) {
-      final index = products.indexOf(product);
-      products[index] = product;
-    }
+  void updateList(Product product) {
+    final index = products.indexOf(product);
+    products[index] = product;
+  }
 
-    void updateProduct(Product product) {
-      ProductDatabaseHelper.db
-          .updateProduct(product)
-          .then((value) => update(product));
-    }
+  void updateProduct(Product product) {
+    ProductDatabaseHelper.db
+        .updateProduct(product)
+        .then((value) => updateList(product));
   }
 }

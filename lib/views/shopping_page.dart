@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_sqflite/controllers/cart_controller.dart';
 import 'package:getx_sqflite/controllers/product_controller.dart';
+import 'package:getx_sqflite/views/add_product.dart';
 
 class ShoppingPage extends StatelessWidget {
   @override
@@ -10,6 +11,16 @@ class ShoppingPage extends StatelessWidget {
     final cartController = Get.put(CartController());
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          title: Text("Shopping App"),
+          centerTitle: true,
+          actions: [
+            IconButton(
+              icon: Icon(Icons.add),
+              onPressed: () => Get.to(AddProduct()),
+            )
+          ],
+        ),
         backgroundColor: Colors.teal,
         body: Column(
           children: [
@@ -56,7 +67,14 @@ class ShoppingPage extends StatelessWidget {
                                     child: Text("Add to Cart"),
                                   )
                                 ],
-                              )
+                              ),
+                              IconButton(
+                                icon: Icon(Icons.delete),
+                                onPressed: () {
+                                  controller.deleteProduct(
+                                      controller.products[index]);
+                                },
+                              ),
                             ],
                           ),
                         ),
@@ -83,10 +101,10 @@ class ShoppingPage extends StatelessWidget {
           init: CartController(),
           builder: (controller) {
             return FloatingActionButton.extended(
-                  onPressed: () {},
-                  label: Text(controller.count.toString()),
-                  icon: Icon(Icons.shopping_cart_outlined),
-                ); 
+              onPressed: () {},
+              label: Text(controller.count.toString()),
+              icon: Icon(Icons.shopping_cart_outlined),
+            );
           },
         ),
       ),

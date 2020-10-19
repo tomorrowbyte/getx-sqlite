@@ -8,7 +8,7 @@ class ProductDatabaseHelper {
   static Database _productDb;
   static ProductDatabaseHelper _productDatabaseHelper;
 
-  String table = 'product_table';
+  String table = 'productTable';
   String colId = 'id';
   String colName = 'productName';
   String colDescription = "productDescription";
