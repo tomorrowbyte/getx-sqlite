@@ -12,12 +12,13 @@ class ShoppingPage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.tealAccent.shade700,
           title: Text("Shopping App"),
           centerTitle: true,
           actions: [
             IconButton(
               icon: Icon(Icons.add),
-              onPressed: () => Get.to(AddProduct()),
+              onPressed: () => Get.to(AddProduct(), arguments: shoppingController),
             )
           ],
         ),
@@ -44,21 +45,15 @@ class ShoppingPage extends StatelessWidget {
                         direction: DismissDirection.endToStart,
                         onDismissed: (direction) {
                           controller.deleteProduct(controller.products[index]);
-                          Get.showSnackbar(GetBar(
-                            mainButton: FlatButton.icon(
-                              onPressed: () {
-                                // controller
-                                //     .addProduct(controller.shouldDeleteProduct.value);
-                              },
-                              icon: Icon(Icons.undo, color: Colors.white),
-                              label: Text("UNDO", style: TextStyle(color: Colors.white),),
-                            ),
-                            messageText: Text(
-                                "${controller.products[index].productName} deleted!"),
-                            icon: Icon(Icons.delete),
+                          Get.snackbar(
+                            "Deleted!",
+                            "${controller.products[index].productName} deleted!",
+                            icon: Icon(Icons.message),
+                            onTap: (_) {},
+                            barBlur: 20,
+                            isDismissible: true,
                             duration: Duration(seconds: 2),
-                            title: "Delete",
-                          ));
+                          );
                         },
                         key: Key(controller.products[index].id.toString()),
                         child: Card(
