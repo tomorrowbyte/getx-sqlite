@@ -45,10 +45,18 @@ class ShoppingPage extends StatelessWidget {
                         onDismissed: (direction) {
                           controller.deleteProduct(controller.products[index]);
                           Get.showSnackbar(GetBar(
-                            messageText: Text("${controller.products[index].productName} deleted!"),
+                            mainButton: FlatButton.icon(
+                              onPressed: () {
+                                controller
+                                    .addProduct(controller.products[index]);
+                              },
+                              icon: Icon(Icons.undo, color: Colors.white),
+                              label: Text("UNDO", style: TextStyle(color: Colors.white),),
+                            ),
+                            messageText: Text(
+                                "${controller.products[index].productName} deleted!"),
                             icon: Icon(Icons.delete),
                             duration: Duration(seconds: 2),
-,
                             title: "Delete",
                           ));
                         },
@@ -130,7 +138,9 @@ class ShoppingPage extends StatelessWidget {
           init: CartController(),
           builder: (controller) {
             return FloatingActionButton.extended(
-              onPressed: () {},
+              onPressed: () {
+                print("FAB Pressed");
+              },
               label: Text(controller.count.toString()),
               icon: Icon(Icons.shopping_cart_outlined),
             );
