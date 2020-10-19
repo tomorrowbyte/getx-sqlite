@@ -42,7 +42,7 @@ class ProductDatabaseHelper {
   void _createDb(Database db, int newVersion) async {
     await db.execute("CREATE TABLE $table"
         "($colId INTEGER PRIMARY KEY AUTOINCREMENT,"
-        "$colName TEXT, $colDescription TEXT, $colPrice INTEGER)");
+        "$colName TEXT, $colDescription TEXT, $colPrice TEXT)");
   }
 
   Future<List<Map<String, dynamic>>> getProductMapList() async {

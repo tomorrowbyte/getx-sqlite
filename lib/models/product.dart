@@ -22,7 +22,7 @@ class Product{
     this.id = map['id'];
     this.productName = map['productName'];
     this.productDescription = map['productDescription'];
-    this.price = map['price'];
+    this.price = double.parse(map['price']);
 
   }
   
