@@ -1,31 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_sqflite/controllers/product_controller.dart';
-import 'package:getx_sqflite/models/product.dart';
+// import 'package:getx_sqflite/models/product.dart';
 
-class AddProduct extends StatefulWidget {
-  @override
-  _AddProductState createState() => _AddProductState();
-}
-
-class _AddProductState extends State<AddProduct> {
-  var shoppingController = Get.put(ShoppingController());
-  var nameController = TextEditingController();
-  var descriptionController = TextEditingController();
-  var priceController = TextEditingController();
-
-  void addProduct(){
-    var product = Product(productName: nameController.text, productDescription: descriptionController.text, price: double.parse(priceController.text));
-    shoppingController.addProduct(product);
-    Navigator.pop(context);
+class AddProduct extends StatelessWidget {
+  final shoppingController = Get.put(ShoppingController());
+  void onAddProductPress() {
+    shoppingController.handleAddButton();
+    // Navigator.pop(context);
+    Get.close(0);
   }
-
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.teal.shade600,
+        backgroundColor: Colors.grey.shade100,
         body: Center(
           child: Column(
             children: [
@@ -37,7 +27,7 @@ class _AddProductState extends State<AddProduct> {
                     icon: Icon(Icons.shop),
                     hintText: "Name",
                   ),
-                  controller: nameController,
+                  controller: shoppingController.nameController.value,
                 ),
               ),
               Padding(
@@ -49,7 +39,7 @@ class _AddProductState extends State<AddProduct> {
                     icon: Icon(Icons.description),
                     hintText: "Description",
                   ),
-                  controller: descriptionController,
+                  controller: shoppingController.descriptionController.value,
                 ),
               ),
               Padding(
@@ -61,15 +51,13 @@ class _AddProductState extends State<AddProduct> {
                     icon: Icon(Icons.monetization_on_rounded),
                     hintText: "Price",
                   ),
-                  controller: priceController,
+                  controller: shoppingController.priceController.value,
                 ),
               ),
               RaisedButton(
                 color: Colors.blue.shade700,
                 child: Text("Add Product"),
-                onPressed: () {
-                  addProduct();
-                },
+                onPressed: onAddProductPress,
               ),
             ],
           ),

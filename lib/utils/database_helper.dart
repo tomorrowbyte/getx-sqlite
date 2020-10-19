@@ -63,7 +63,7 @@ class ProductDatabaseHelper {
   }
 
   Future<int> insertProduct(Product product, {cart = false}) async {
-    print(cart);
+    // print(cart);
     Database db = await this.database;
     var result = await db.insert(cart ? cartTable : table, product.toMap());
     return result;

@@ -47,8 +47,8 @@ class ShoppingPage extends StatelessWidget {
                           Get.showSnackbar(GetBar(
                             mainButton: FlatButton.icon(
                               onPressed: () {
-                                controller
-                                    .addProduct(controller.products[index]);
+                                // controller
+                                //     .addProduct(controller.shouldDeleteProduct.value);
                               },
                               icon: Icon(Icons.undo, color: Colors.white),
                               label: Text("UNDO", style: TextStyle(color: Colors.white),),

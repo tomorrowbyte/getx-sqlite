@@ -1,12 +1,17 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:getx_sqflite/models/product.dart';
 import 'package:getx_sqflite/utils/database_helper.dart';
 
 class ShoppingController extends GetxController {
   var products = List<Product>().obs;
+  var nameController = TextEditingController().obs;
+  var descriptionController = TextEditingController().obs;
+  var priceController = TextEditingController().obs;
 
   @override
   void onInit() {
+    products.value = [];
     fetchProducts();
     super.onInit();
   }
@@ -38,5 +43,17 @@ class ShoppingController extends GetxController {
     ProductDatabaseHelper.db
         .updateProduct(product)
         .then((value) => updateList(product));
+  }
+
+  void handleAddButton() {
+    var product = Product(
+      productName: nameController.value.text,
+      productDescription: descriptionController.value.text,
+      price: double.parse(priceController.value.text),
+    );
+    nameController.value.text = "";
+    descriptionController.value.text = "";
+    priceController.value.text = "";
+    addProduct(product);
   }
 }
