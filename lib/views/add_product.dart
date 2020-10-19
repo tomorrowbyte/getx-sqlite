@@ -25,6 +25,7 @@ class _AddProductState extends State<AddProduct> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.teal.shade600,
         body: Center(
           child: Column(
             children: [
@@ -64,7 +65,7 @@ class _AddProductState extends State<AddProduct> {
                 ),
               ),
               RaisedButton(
-                color: Colors.blue.shade400,
+                color: Colors.blue.shade700,
                 child: Text("Add Product"),
                 onPressed: () {
                   addProduct();
