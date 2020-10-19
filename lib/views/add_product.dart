@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:getx_sqflite/controllers/product_controller.dart';
+import 'package:getx_sqflite/models/product.dart';
 
 class AddProduct extends StatefulWidget {
   @override
@@ -6,9 +9,18 @@ class AddProduct extends StatefulWidget {
 }
 
 class _AddProductState extends State<AddProduct> {
+  var shoppingController = Get.put(ShoppingController());
   var nameController = TextEditingController();
   var descriptionController = TextEditingController();
   var priceController = TextEditingController();
+
+  void addProduct(){
+    var product = Product(productName: nameController.text, productDescription: descriptionController.text, price: double.parse(priceController.text));
+    shoppingController.addProduct(product);
+    Navigator.pop(context);
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -36,24 +48,27 @@ class _AddProductState extends State<AddProduct> {
                     icon: Icon(Icons.description),
                     hintText: "Description",
                   ),
-                  controller: nameController,
+                  controller: descriptionController,
                 ),
               ),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 25.0, vertical: 10),
                 child: TextField(
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     icon: Icon(Icons.monetization_on_rounded),
                     hintText: "Price",
                   ),
-                  controller: nameController,
+                  controller: priceController,
                 ),
               ),
               RaisedButton(
                 color: Colors.blue.shade400,
                 child: Text("Add Product"),
-                onPressed: () {},
+                onPressed: () {
+                  addProduct();
+                },
               ),
             ],
           ),
