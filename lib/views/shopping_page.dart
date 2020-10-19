@@ -68,12 +68,16 @@ class ShoppingPage extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              IconButton(
-                                icon: Icon(Icons.delete),
-                                onPressed: () {
-                                  controller.deleteProduct(
-                                      controller.products[index]);
-                                },
+                              Row(
+                                children: [
+                                  IconButton(
+                                    icon: Icon(Icons.delete),
+                                    onPressed: () {
+                                      controller.deleteProduct(
+                                          controller.products[index]);
+                                    },
+                                  ),
+                                ],
                               ),
                             ],
                           ),

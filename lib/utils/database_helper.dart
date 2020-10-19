@@ -9,6 +9,7 @@ class ProductDatabaseHelper {
   static ProductDatabaseHelper _productDatabaseHelper;
 
   String table = 'productTable';
+  String cartTable = 'cartTable';
   String colId = 'id';
   String colName = 'productName';
   String colDescription = "productDescription";
@@ -26,6 +27,7 @@ class ProductDatabaseHelper {
   }
 
   Future<Database> get database async {
+    
     if (_productDb == null) {
       _productDb = await initializeDatabase();
     }
@@ -43,6 +45,9 @@ class ProductDatabaseHelper {
     await db.execute("CREATE TABLE $table"
         "($colId INTEGER PRIMARY KEY AUTOINCREMENT,"
         "$colName TEXT, $colDescription TEXT, $colPrice TEXT)");
+    await db.execute('CREATE TABLE $cartTable'
+        "($colId INTEGER PRIMARY KEY AUTOINCREMENT,"
+        "$colName TEXT, $colDescription TEXT, $colPrice TEXT)");
   }
 
   Future<List<Map<String, dynamic>>> getProductMapList() async {
@@ -51,37 +56,56 @@ class ProductDatabaseHelper {
     return result;
   }
 
-  Future<int> insertProduct(Product product) async {
+  Future<List<Map<String, dynamic>>> getCartMapList() async {
     Database db = await this.database;
-    var result = await db.insert(table, product.toMap());
+    var result = await db.query(cartTable, orderBy: "$colId ASC");
     return result;
   }
 
-  Future<int> updateProduct(Product product) async {
+  Future<int> insertProduct(Product product, {cart = false}) async {
+    print(cart);
+    Database db = await this.database;
+    var result = await db.insert(cart ? cartTable : table, product.toMap());
+    return result;
+  }
+
+  Future<int> updateProduct(Product product, {cart = false}) async {
     // print("updating task ${task.id} ${task.name} current status ${task.completed}");
     var db = await this.database;
-    var result = await db.update(table, product.toMap(),
+    var result = await db.update(cart ? cartTable : table, product.toMap(),
         where: '$colId = ?', whereArgs: [product.id]);
     return result;
   }
 
-  Future<int> deleteProduct(int id) async {
+  Future<int> deleteProduct(int id, {cart = false}) async {
     var db = await this.database;
-    int result = await db.delete(table, where: '$colId = ?', whereArgs: [id]);
+    int result = await db
+        .delete(cart ? cartTable : table, where: '$colId = ?', whereArgs: [id]);
     return result;
   }
 
-  Future<int> getCount() async {
+  Future<int> getCount(tableName) async {
     Database db = await this.database;
     List<Map<String, dynamic>> x =
-        await db.rawQuery('SELECT COUNT (*) from $table');
+        await db.rawQuery('SELECT COUNT (*) from $tableName');
     int result = Sqflite.firstIntValue(x);
     return result;
   }
 
   Future<List<Product>> getProductList() async {
     var productMapList = await getProductMapList();
-    int count = await getCount();
+    int count = await getCount(table);
+
+    List<Product> productList = List<Product>();
+    for (int i = 0; i < count; i++) {
+      productList.add(Product.fromMap(productMapList[i]));
+    }
+    return productList;
+  }
+
+  Future<List<Product>> getCartProductList() async {
+    var productMapList = await getCartMapList();
+    int count = await getCount(cartTable);
 
     List<Product> productList = List<Product>();
     for (int i = 0; i < count; i++) {
