@@ -7,8 +7,7 @@ class AddProduct extends StatelessWidget {
   final shoppingController = Get.put(ShoppingController());
   void onAddProductPress() {
     shoppingController.handleAddButton();
-    // Navigator.pop(context);
-    Get.close(0);
+    Get.back();
   }
 
   @override

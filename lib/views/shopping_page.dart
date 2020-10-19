@@ -44,21 +44,10 @@ class ShoppingPage extends StatelessWidget {
                         direction: DismissDirection.endToStart,
                         onDismissed: (direction) {
                           controller.deleteProduct(controller.products[index]);
-                          Get.showSnackbar(GetBar(
-                            mainButton: FlatButton.icon(
-                              onPressed: () {
-                                // controller
-                                //     .addProduct(controller.shouldDeleteProduct.value);
-                              },
-                              icon: Icon(Icons.undo, color: Colors.white),
-                              label: Text("UNDO", style: TextStyle(color: Colors.white),),
-                            ),
-                            messageText: Text(
-                                "${controller.products[index].productName} deleted!"),
-                            icon: Icon(Icons.delete),
-                            duration: Duration(seconds: 2),
-                            title: "Delete",
-                          ));
+                          Get.snackbar(
+                            "Deleted!",
+                            "${controller.products[index].productName} deleted!",
+                          );
                         },
                         key: Key(controller.products[index].id.toString()),
                         child: Card(
