@@ -12,6 +12,7 @@ class ShoppingPage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.tealAccent.shade700,
           title: Text("Shopping App"),
           centerTitle: true,
           actions: [
@@ -47,6 +48,11 @@ class ShoppingPage extends StatelessWidget {
                           Get.snackbar(
                             "Deleted!",
                             "${controller.products[index].productName} deleted!",
+                            icon: Icon(Icons.message),
+                            onTap: (_) {},
+                            barBlur: 20,
+                            isDismissible: true,
+                            duration: Duration(seconds: 2),
                           );
                         },
                         key: Key(controller.products[index].id.toString()),
