@@ -7,7 +7,6 @@ import 'package:getx_sqflite/views/add_product.dart';
 class ShoppingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final shoppingController = Get.put(ShoppingController());
     final cartController = Get.put(CartController());
     return SafeArea(
       child: Scaffold(
@@ -29,57 +28,68 @@ class ShoppingPage extends StatelessWidget {
                 builder: (controller) {
                   return ListView.builder(
                     itemBuilder: (context, index) {
-                      return Card(
-                        margin: const EdgeInsets.all(12),
-                        child: Padding(
-                          padding: EdgeInsets.all(16),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "${controller.products[index].productName}",
-                                    style: TextStyle(
-                                      fontSize: 20,
+                      final product = controller.products[index];
+                      return Dismissible(
+                        direction: DismissDirection.horizontal,
+                        onDismissed: (direction){
+                          controller.deleteProduct(controller.products[index]);
+                          Get.showSnackbar(GetBar(
+                            message: "${controller.products[index].productName} deleted!",
+                          ));
+                        },
+                        key: Key(controller.products[index].id.toString()),
+                        child: Card(
+                          margin: const EdgeInsets.all(12),
+                          child: Padding(
+                            padding: EdgeInsets.all(16),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "${controller.products[index].productName}",
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                      ),
                                     ),
-                                  ),
-                                  Text(
-                                    "\$${controller.products[index].price}",
-                                    style: TextStyle(
-                                      fontSize: 20,
+                                    Text(
+                                      "\$${controller.products[index].price}",
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    RaisedButton(
+                                      onPressed: () {
+                                        cartController.addToCart(
+                                            controller.products[index]);
+                                      },
+                                      color: Colors.blue,
+                                      textColor: Colors.white,
+                                      child: Text("Add to Cart"),
+                                    )
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    IconButton(
+                                      icon: Icon(Icons.delete),
+                                      onPressed: () {
+                                        controller.deleteProduct(
+                                            controller.products[index]);
+                                      },
                                     ),
-                                  )
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  RaisedButton(
-                                    onPressed: () {
-                                      cartController.addToCart(
-                                          controller.products[index]);
-                                    },
-                                    color: Colors.blue,
-                                    textColor: Colors.white,
-                                    child: Text("Add to Cart"),
-                                  )
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  IconButton(
-                                    icon: Icon(Icons.delete),
-                                    onPressed: () {
-                                      controller.deleteProduct(
-                                          controller.products[index]);
-                                    },
-                                  ),
-                                ],
-                              ),
-                            ],
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       );
