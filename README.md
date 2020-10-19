@@ -1,6 +1,14 @@
-# getx_sqflite
+# GetX and Sqflite App
 
-A new Flutter project.
+A shopping app project using GetX and Sqflite. The Get package is really intresting and
+wonderful to work with. 
+- Flutter made easy. 
+- It's easy to do state management.
+- providing MVC pattern.
+- less code than flutter itself. 
+- and provides tons of other intresting functionalities. 
+
+[see official repository](https://github.com/jonataslaw/getx).
 
 ## Getting Started
 
