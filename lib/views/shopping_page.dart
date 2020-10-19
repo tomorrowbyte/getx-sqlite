@@ -7,6 +7,7 @@ import 'package:getx_sqflite/views/add_product.dart';
 class ShoppingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final shoppingController = Get.put(ShoppingController());
     final cartController = Get.put(CartController());
     return SafeArea(
       child: Scaffold(
@@ -28,13 +29,27 @@ class ShoppingPage extends StatelessWidget {
                 builder: (controller) {
                   return ListView.builder(
                     itemBuilder: (context, index) {
-                      final product = controller.products[index];
                       return Dismissible(
-                        direction: DismissDirection.horizontal,
-                        onDismissed: (direction){
+                        background: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          alignment: Alignment.centerRight,
+                          child: Icon(
+                            Icons.delete,
+                            size: 50,
+                          ),
+                        ),
+                        direction: DismissDirection.endToStart,
+                        onDismissed: (direction) {
                           controller.deleteProduct(controller.products[index]);
                           Get.showSnackbar(GetBar(
-                            message: "${controller.products[index].productName} deleted!",
+                            messageText: Text("${controller.products[index].productName} deleted!"),
+                            icon: Icon(Icons.delete),
+                            duration: Duration(seconds: 2),
+,
+                            title: "Delete",
                           ));
                         },
                         key: Key(controller.products[index].id.toString()),
