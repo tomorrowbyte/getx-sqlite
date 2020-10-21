@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:getx_sqflite/controllers/cart_controller.dart';
 
 class CartScreen extends StatelessWidget {
-  var cartController = Get.put(CartController());
+  final cartController = Get.put(CartController());
 
   @override
   Widget build(BuildContext context) {
