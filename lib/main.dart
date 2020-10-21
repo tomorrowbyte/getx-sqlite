@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
        primaryColor: Colors.teal.shade600,
       ),
-      title: 'Flutter Demo',
+      title: 'My Shopp App',
      home: ShoppingPage(),
     );
   }
