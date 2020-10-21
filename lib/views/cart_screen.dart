@@ -35,7 +35,7 @@ class CartScreen extends StatelessWidget {
                     decoration: BoxDecoration(color: Colors.blue.shade700),
                   ),
                   key: Key(i.toString()),
-                  direction: DismissDirection.startToEnd,
+                  direction: DismissDirection.endToStart,
                   onDismissed: (direction) {
                     print(direction);
                     controller.removeFromCart(product);
