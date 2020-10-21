@@ -16,6 +16,7 @@ class ProductDatabaseHelper {
   String colPrice = "price";
 
   ProductDatabaseHelper._createInstance();
+    
   static final ProductDatabaseHelper db =
       ProductDatabaseHelper._createInstance();
 

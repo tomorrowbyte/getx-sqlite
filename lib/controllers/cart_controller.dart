@@ -27,4 +27,11 @@ class CartController extends GetxController {
         .deleteProduct(product.id, cart: true)
         .then((value) => {cartItems.remove(product)});
   }
+
+  void resetCart(){
+    cartItems.forEach((product) {
+      ProductDatabaseHelper.db.deleteProduct(product.id, cart: true);
+     });
+     cartItems.value = [];
+  }
 }

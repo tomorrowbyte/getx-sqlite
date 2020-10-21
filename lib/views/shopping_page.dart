@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:getx_sqflite/controllers/cart_controller.dart';
 import 'package:getx_sqflite/controllers/product_controller.dart';
 import 'package:getx_sqflite/views/add_product.dart';
+import 'package:getx_sqflite/views/cart_screen.dart';
 
 class ShoppingPage extends StatelessWidget {
   @override
@@ -123,7 +124,7 @@ class ShoppingPage extends StatelessWidget {
           builder: (controller) {
             return FloatingActionButton.extended(
               onPressed: () {
-                print("FAB Pressed");
+                Get.to(CartScreen());
               },
               label: Text(controller.count.toString()),
               icon: Icon(Icons.shopping_cart_outlined),
