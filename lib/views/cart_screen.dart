@@ -26,7 +26,6 @@ class CartItemsScreen extends StatelessWidget {
         ),
         body: GetX<CartController>(
           init: CartController(),
-          // initState: (_) {},
           builder: (controller) {
             return ListView.builder(
               itemCount: controller.cartItems.length,
@@ -39,7 +38,6 @@ class CartItemsScreen extends StatelessWidget {
                   key: UniqueKey(),
                   direction: DismissDirection.endToStart,
                   onDismissed: (direction) {
-                    print(direction);
                     controller.removeFromCart(product);
                     Get.snackbar(
                         "${product.productName.toUpperCase()} Deleted", "");
