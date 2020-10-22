@@ -16,7 +16,7 @@ class ProductDatabaseHelper {
   String colPrice = "price";
 
   ProductDatabaseHelper._createInstance();
-    
+
   static final ProductDatabaseHelper db =
       ProductDatabaseHelper._createInstance();
 
@@ -28,7 +28,6 @@ class ProductDatabaseHelper {
   }
 
   Future<Database> get database async {
-    
     if (_productDb == null) {
       _productDb = await initializeDatabase();
     }
@@ -79,6 +78,7 @@ class ProductDatabaseHelper {
   }
 
   Future<int> deleteProduct(int id, {cart = false}) async {
+    print("Deleting Product with id: $id ");
     var db = await this.database;
     int result = await db
         .delete(cart ? cartTable : table, where: '$colId = ?', whereArgs: [id]);
@@ -113,5 +113,11 @@ class ProductDatabaseHelper {
       productList.add(Product.fromMap(productMapList[i]));
     }
     return productList;
+  }
+
+  close() async {
+    var db = await this.database;
+    var result = db.close();
+    return result;
   }
 }

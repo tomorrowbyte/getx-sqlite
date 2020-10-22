@@ -56,4 +56,10 @@ class ShoppingController extends GetxController {
     priceController.value.text = "";
     addProduct(product);
   }
+
+  @override
+  void onClose() {
+    ProductDatabaseHelper.db.close();
+    super.onClose();
+  }
 }

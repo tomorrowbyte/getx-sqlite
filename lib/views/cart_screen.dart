@@ -34,7 +34,7 @@ class CartScreen extends StatelessWidget {
                   background: Container(
                     decoration: BoxDecoration(color: Colors.blue.shade700),
                   ),
-                  key: Key(i.toString()),
+                  key: UniqueKey(),
                   direction: DismissDirection.endToStart,
                   onDismissed: (direction) {
                     print(direction);
