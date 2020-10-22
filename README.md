@@ -25,11 +25,13 @@ samples, guidance on mobile development, and a full API reference.
 
 
 ## Installation 
-Clone the repo go to directory and run : 
-'''
+[x] Clone locally the repository
+[x] Go to app directory and run <br>
+'''dart
 flutter pub get 
 '''
-and then run
-'''
+
+[x] And then run
+'''dart
 flutter run
 '''
