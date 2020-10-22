@@ -56,7 +56,7 @@ class CartItemsScreen extends StatelessWidget {
                         : Icon(Icons.dashboard_outlined),
                     title: Text(product.name),
                     subtitle: Text(product.description),
-                    trailing: Text(product.price.toString()),
+                    trailing: Text("\$ "+ product.price.toString()),
                   ),
                 );
               },
