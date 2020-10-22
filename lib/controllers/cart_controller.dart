@@ -17,21 +17,34 @@ class CartController extends GetxController {
   int get count => cartItems.length;
 
   void addToCart(Product product) {
-    ProductDatabaseHelper.db
-        .insertProduct(product, cart: true)
-        .then((_) => cartItems.add(product));
+    if (product.id != null) {
+      product.id = null;
+    }
+    ProductDatabaseHelper.db.insertProduct(product, cart: true).then((id) {
+      product.id = id;
+      cartItems.add(product);
+    });
   }
 
   void removeFromCart(Product product) {
-    ProductDatabaseHelper.db
-        .deleteProduct(product.id, cart: true)
-        .then((value) => {cartItems.remove(product)});
+    if (product.id != null) {
+      ProductDatabaseHelper.db
+          .deleteProduct(product.id, cart: true)
+          .then((value) => {cartItems.remove(product)});
+    }
   }
 
-  void resetCart(){
-    cartItems.forEach((product) {
-      ProductDatabaseHelper.db.deleteProduct(product.id, cart: true);
-     });
-     cartItems.value = [];
+  void resetCart() async {
+    cartItems.forEach((product) async {
+      print("${product.id} ${product.productName}");
+      var result =
+          await ProductDatabaseHelper.db.deleteProduct(product.id, cart: true);
+      if (result == 1) {
+        cartItems.remove(product);
+      } else {
+        await ProductDatabaseHelper.db.deleteProduct(product.id, cart: true);
+      }
+    });
+    //  cartItems.value = [];
   }
 }

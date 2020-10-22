@@ -66,6 +66,7 @@ class ProductDatabaseHelper {
     // print(cart);
     Database db = await this.database;
     var result = await db.insert(cart ? cartTable : table, product.toMap());
+    print(result);
     return result;
   }
 
@@ -82,6 +83,7 @@ class ProductDatabaseHelper {
     var db = await this.database;
     int result = await db
         .delete(cart ? cartTable : table, where: '$colId = ?', whereArgs: [id]);
+    print("Delete result: $result");
     return result;
   }
 
