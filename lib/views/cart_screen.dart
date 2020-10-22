@@ -45,9 +45,7 @@ class CartItemsScreen extends StatelessWidget {
                             child: Image.file(File(product.image)),
                             onTap: () {
                               Get.dialog(
-                                Image.file(
-                                  File(product.image),
-                                ),
+                                Image.file(File(product.image)),
                                 useSafeArea: false,
                               );
                               print(product.image);
@@ -56,7 +54,7 @@ class CartItemsScreen extends StatelessWidget {
                         : Icon(Icons.dashboard_outlined),
                     title: Text(product.name),
                     subtitle: Text(product.description),
-                    trailing: Text("\$ "+ product.price.toString()),
+                    trailing: Text("\$ " + product.price.toString()),
                   ),
                 );
               },
