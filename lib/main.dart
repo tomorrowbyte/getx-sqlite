@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-import 'package:getx_sqflite/views/shopping_page.dart';
+import 'package:getx_sqflite/views/product_list_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
        primaryColor: Colors.teal.shade600,
       ),
       title: 'My Shopp App',
-     home: ShoppingPage(),
+     home: ProductListScreen(),
     );
   }
 }

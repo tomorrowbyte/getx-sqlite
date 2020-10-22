@@ -5,9 +5,9 @@ import 'package:get/get.dart';
 import 'package:getx_sqflite/controllers/product_controller.dart';
 // import 'package:getx_sqflite/models/product.dart';
 
-class AddProduct extends StatelessWidget {
+class AddProductScreen extends StatelessWidget {
   final shoppingController = Get.put(ShoppingController());
-  void onAddProductPress() {
+  void onAddProductScreenPress() {
     shoppingController.handleAddButton();
     Get.back();
   }
@@ -78,7 +78,7 @@ class AddProduct extends StatelessWidget {
                     "Add Product",
                     style: TextStyle(color: Colors.white),
                   ),
-                  onPressed: onAddProductPress,
+                  onPressed: onAddProductScreenPress,
                 ),
               ],
             ),

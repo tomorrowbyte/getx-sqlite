@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_sqflite/controllers/cart_controller.dart';
 import 'package:getx_sqflite/controllers/product_controller.dart';
-import 'package:getx_sqflite/views/add_product.dart';
+import 'package:getx_sqflite/views/add_product_screen.dart';
 import 'package:getx_sqflite/views/cart_screen.dart';
 
-class ShoppingPage extends StatelessWidget {
+class ProductListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final shoppingController = Get.put(ShoppingController());
@@ -22,7 +22,7 @@ class ShoppingPage extends StatelessWidget {
             IconButton(
               icon: Icon(Icons.add),
               onPressed: () =>
-                  Get.to(AddProduct(), arguments: shoppingController),
+                  Get.to(AddProductScreen(), arguments: shoppingController),
             )
           ],
         ),
