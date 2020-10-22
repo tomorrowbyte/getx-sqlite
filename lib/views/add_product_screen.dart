@@ -6,12 +6,24 @@ class AddProductScreen extends StatelessWidget {
   final shoppingController = Get.put(ShoppingController());
 
   void onAddProductScreenPress() {
-    shoppingController.handleAddButton();
+    if (Get.arguments.id != null) {
+      shoppingController.handleAddButton(Get.arguments.id);
+    } else {
+      shoppingController.handleAddButton();
+    }
+
     Get.back();
   }
 
   @override
   Widget build(BuildContext context) {
+    if (Get.arguments != null) {
+      var args = Get.arguments;
+      shoppingController.nameController.value.text = args.name;
+      shoppingController.descriptionController.value.text = args.description;
+      shoppingController.priceController.value.text = args.price.toString();
+      shoppingController.imagePath.value = args.image;
+    }
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.grey.shade100,

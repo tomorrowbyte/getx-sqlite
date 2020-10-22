@@ -60,54 +60,59 @@ class ProductListScreen extends StatelessWidget {
                           );
                         },
                         key: Key(controller.products[index].id.toString()),
-                        child: Card(
-                          margin: const EdgeInsets.all(12),
-                          child: Padding(
-                            padding: EdgeInsets.all(16),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Image.file(
-                                      File(controller.products[index].image),
-                                      width: 64.0,
-                                      height: 64.0,
-                                      fit: BoxFit.cover,
-                                    ),
-                                    Text(
-                                      "\$${controller.products[index].price}",
-                                      style: TextStyle(
-                                        fontSize: 20,
+                        child: GestureDetector(
+                          onDoubleTap: (){
+                            Get.to(AddProductScreen(), arguments: controller.products[index]);
+                          },
+                          child: Card(
+                            margin: const EdgeInsets.all(12),
+                            child: Padding(
+                              padding: EdgeInsets.all(16),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Image.file(
+                                        File(controller.products[index].image),
+                                        width: 64.0,
+                                        height: 64.0,
+                                        fit: BoxFit.cover,
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "${controller.products[index].name}",
-                                      style: TextStyle(
-                                        fontSize: 20,
+                                      Text(
+                                        "\$${controller.products[index].price}",
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                        ),
                                       ),
-                                    ),
-                                    RaisedButton.icon(
-                                      onPressed: () {
-                                        cartController.addToCart(
-                                            controller.products[index]);
-                                      },
-                                      color: Colors.blue,
-                                      textColor: Colors.white,
-                                      icon: Icon(Icons.add_shopping_cart),
-                                      label: Text("Add to Cart"),
-                                    )
-                                  ],
-                                ),
-                              ],
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        "${controller.products[index].name}",
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                        ),
+                                      ),
+                                      RaisedButton.icon(
+                                        onPressed: () {
+                                          cartController.addToCart(
+                                              controller.products[index]);
+                                        },
+                                        color: Colors.blue,
+                                        textColor: Colors.white,
+                                        icon: Icon(Icons.add_shopping_cart),
+                                        label: Text("Add to Cart"),
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
