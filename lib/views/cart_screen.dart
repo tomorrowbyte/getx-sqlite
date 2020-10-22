@@ -19,7 +19,7 @@ class CartItemsScreen extends StatelessWidget {
               onPressed: cartController.resetCart,
             ),
             IconButton(
-              icon: Icon(Icons.playlist_add_check_outlined),
+              icon: Icon(Icons.add_shopping_cart),
               onPressed: () {},
             ),
           ],
