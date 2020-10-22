@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_sqflite/controllers/cart_controller.dart';
@@ -19,7 +21,8 @@ class ShoppingPage extends StatelessWidget {
           actions: [
             IconButton(
               icon: Icon(Icons.add),
-              onPressed: () => Get.to(AddProduct(), arguments: shoppingController),
+              onPressed: () =>
+                  Get.to(AddProduct(), arguments: shoppingController),
             )
           ],
         ),
@@ -79,12 +82,16 @@ class ShoppingPage extends StatelessWidget {
                                       style: TextStyle(
                                         fontSize: 20,
                                       ),
-                                    )
+                                    ),
                                   ],
                                 ),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
+                                    Image.file(
+                                      File(controller.products[index].image),
+                                      width: 100.0,
+                                    ),
                                     RaisedButton.icon(
                                       onPressed: () {
                                         cartController.addToCart(
@@ -92,7 +99,8 @@ class ShoppingPage extends StatelessWidget {
                                       },
                                       color: Colors.blue,
                                       textColor: Colors.white,
-                                      icon: Icon(Icons.add_shopping_cart), label: Text("Add to Cart"),
+                                      icon: Icon(Icons.add_shopping_cart),
+                                      label: Text("Add to Cart"),
                                     )
                                   ],
                                 ),
