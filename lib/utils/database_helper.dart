@@ -14,7 +14,7 @@ class ProductDatabaseHelper {
   String colName = 'name';
   String colDescription = "description";
   String colPrice = "price";
-
+  String colImage = 'image';
   ProductDatabaseHelper._createInstance();
 
   static final ProductDatabaseHelper db =
@@ -44,10 +44,10 @@ class ProductDatabaseHelper {
   void _createDb(Database db, int newVersion) async {
     await db.execute("CREATE TABLE $table"
         "($colId INTEGER PRIMARY KEY AUTOINCREMENT,"
-        "$colName TEXT, $colDescription TEXT, $colPrice TEXT)");
+        "$colName TEXT, $colDescription TEXT, $colPrice TEXT, $colImage TEXT)");
     await db.execute('CREATE TABLE $cartTable'
         "($colId INTEGER PRIMARY KEY AUTOINCREMENT,"
-        "$colName TEXT, $colDescription TEXT, $colPrice TEXT)");
+        "$colName TEXT, $colDescription TEXT, $colPrice TEXT, $colImage TEXT)");
   }
 
   Future<List<Map<String, dynamic>>> getProductMapList() async {

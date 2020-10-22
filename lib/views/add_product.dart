@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_sqflite/controllers/product_controller.dart';
@@ -56,6 +58,15 @@ class AddProduct extends StatelessWidget {
                   border: OutlineInputBorder(),
                 ),
                 controller: shoppingController.priceController.value,
+              ),
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 25.0, vertical: 10),
+              child: FlatButton.icon(
+                icon: Icon(Icons.add_photo_alternate),
+                label: Text("Select Image"),
+                onPressed: shoppingController.getImage,
               ),
             ),
             Row(
