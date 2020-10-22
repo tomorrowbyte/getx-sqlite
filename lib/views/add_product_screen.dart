@@ -24,6 +24,7 @@ class AddProductScreen extends StatelessWidget {
       shoppingController.priceController.value.text = args.price.toString();
       shoppingController.imagePath.value = args.image;
     }
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.grey.shade100,
