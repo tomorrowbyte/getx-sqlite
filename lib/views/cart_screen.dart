@@ -36,8 +36,7 @@ class CartItemsScreen extends StatelessWidget {
                   direction: DismissDirection.endToStart,
                   onDismissed: (direction) {
                     controller.removeFromCart(product);
-                    Get.snackbar(
-                        "${product.name.toUpperCase()} Deleted", "");
+                    Get.snackbar("${product.name.toUpperCase()} Deleted", "");
                   },
                   child: ListTile(
                     leading: Icon(Icons.card_travel),

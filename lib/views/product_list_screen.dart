@@ -50,8 +50,8 @@ class ProductListScreen extends StatelessWidget {
                         onDismissed: (direction) {
                           controller.deleteProduct(controller.products[index]);
                           Get.snackbar(
-                            "Deleted!",
-                            "${controller.products[index].name} deleted!",
+                            "${controller.products[index].name} Deleted!",
+                            "",
                             icon: Icon(Icons.message),
                             onTap: (_) {},
                             barBlur: 20,
@@ -71,11 +71,11 @@ class ProductListScreen extends StatelessWidget {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(
-                                      "${controller.products[index].name}",
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                      ),
+                                    Image.file(
+                                      File(controller.products[index].image),
+                                      width: 64.0,
+                                      height: 64.0,
+                                      fit: BoxFit.cover,
                                     ),
                                     Text(
                                       "\$${controller.products[index].price}",
@@ -86,11 +86,14 @@ class ProductListScreen extends StatelessWidget {
                                   ],
                                 ),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Image.file(
-                                      File(controller.products[index].image),
-                                      width: 100.0,
+                                    Text(
+                                      "${controller.products[index].name}",
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                      ),
                                     ),
                                     RaisedButton.icon(
                                       onPressed: () {

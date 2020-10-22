@@ -7,6 +7,7 @@ import 'package:getx_sqflite/controllers/product_controller.dart';
 
 class AddProductScreen extends StatelessWidget {
   final shoppingController = Get.put(ShoppingController());
+  
   void onAddProductScreenPress() {
     shoppingController.handleAddButton();
     Get.back();
