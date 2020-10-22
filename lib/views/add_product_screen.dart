@@ -63,9 +63,11 @@ class AddProductScreen extends StatelessWidget {
                   const EdgeInsets.symmetric(horizontal: 25.0, vertical: 10),
               child: FlatButton.icon(
                 icon: Icon(Icons.add_photo_alternate),
-                label: Text(shoppingController.imagePath.value != ""
-                    ? "Select Image"
-                    : shoppingController.imagePath.value),
+                label: FittedBox(
+                  child: Text(shoppingController.imagePath.value == ""
+                      ? "Select Image"
+                      : shoppingController.imagePath.value.substring(44)),
+                ),
                 onPressed: shoppingController.getImage,
               ),
             ),

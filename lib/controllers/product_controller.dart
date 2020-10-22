@@ -15,7 +15,7 @@ class ShoppingController extends GetxController {
   void getImage() async {
     final pickedFile = await picker.value.getImage(source: ImageSource.gallery);
     if (pickedFile != null) {
-      imagePath.value =  pickedFile.path;
+      imagePath.value = pickedFile.path;
     }
   }
 
@@ -61,7 +61,6 @@ class ShoppingController extends GetxController {
       description: descriptionController.value.text,
       price: double.parse(priceController.value.text),
       image: imagePath.value,
-
     );
     nameController.value.text = "";
     descriptionController.value.text = "";
