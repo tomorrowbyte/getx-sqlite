@@ -1,4 +1,4 @@
-# GetX and Sqflite App
+# GetX Shopping App
 
 A shopping app project using GetX and Sqflite. The Get package is really intresting and
 wonderful to work with. 
