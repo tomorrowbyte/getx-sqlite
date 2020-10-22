@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_sqflite/controllers/product_controller.dart';
-// import 'package:getx_sqflite/models/product.dart';
 
-class AddProduct extends StatelessWidget {
+class AddProductScreen extends StatelessWidget {
   final shoppingController = Get.put(ShoppingController());
-  void onAddProductPress() {
+
+  void onAddProductScreenPress() {
     shoppingController.handleAddButton();
     Get.back();
   }
@@ -58,6 +58,25 @@ class AddProduct extends StatelessWidget {
                 controller: shoppingController.priceController.value,
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 25.0,
+                vertical: 10,
+              ),
+              child: FlatButton.icon(
+                icon: Icon(Icons.add_photo_alternate),
+                label: FittedBox(
+                  child: Obx(
+                    () => Text(
+                      shoppingController.imagePath.value == ""
+                          ? "Select Image"
+                          : shoppingController.imagePath.value.substring(44),
+                    ),
+                  ),
+                ),
+                onPressed: shoppingController.getImage,
+              ),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -67,7 +86,7 @@ class AddProduct extends StatelessWidget {
                     "Add Product",
                     style: TextStyle(color: Colors.white),
                   ),
-                  onPressed: onAddProductPress,
+                  onPressed: onAddProductScreenPress,
                 ),
               ],
             ),

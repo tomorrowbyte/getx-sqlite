@@ -1,29 +1,29 @@
-
-class Product{
+class Product {
   int id;
-  String productName;
-  String productDescription;
+  String name;
+  String description;
   double price;
+  String image;
 
-  Product({this.id, this.productName, this.productDescription,this.price});
+  Product({this.id, this.name, this.description, this.price, this.image});
 
-  Map<String, dynamic> toMap(){
-   var map = Map<String, dynamic>();
-   if (id!=null){
-     map['id'] = id;
-   } 
-   map['productName'] = productName;
-   map['productDescription'] = productDescription;
-   map['price'] = price;
-   return map;
+  Map<String, dynamic> toMap() {
+    var map = Map<String, dynamic>();
+    if (id != null) {
+      map['id'] = id;
+    }
+    map['name'] = name;
+    map['description'] = description;
+    map['price'] = price;
+    map['image'] = image;
+    return map;
   }
 
-  Product.fromMap(Map<String, dynamic> map){
+  Product.fromMap(Map<String, dynamic> map) {
     this.id = map['id'];
-    this.productName = map['productName'];
-    this.productDescription = map['productDescription'];
+    this.name = map['name'];
+    this.description = map['description'];
+    this.image = map['image'];
     this.price = double.parse(map['price']);
-
   }
-  
 }

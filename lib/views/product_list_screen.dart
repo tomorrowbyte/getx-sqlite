@@ -1,11 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_sqflite/controllers/cart_controller.dart';
 import 'package:getx_sqflite/controllers/product_controller.dart';
-import 'package:getx_sqflite/views/add_product.dart';
+import 'package:getx_sqflite/views/add_product_screen.dart';
 import 'package:getx_sqflite/views/cart_screen.dart';
 
-class ShoppingPage extends StatelessWidget {
+class ProductListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final shoppingController = Get.put(ShoppingController());
@@ -19,7 +21,8 @@ class ShoppingPage extends StatelessWidget {
           actions: [
             IconButton(
               icon: Icon(Icons.add),
-              onPressed: () => Get.to(AddProduct(), arguments: shoppingController),
+              onPressed: () =>
+                  Get.to(AddProductScreen(), arguments: shoppingController),
             )
           ],
         ),
@@ -47,8 +50,8 @@ class ShoppingPage extends StatelessWidget {
                         onDismissed: (direction) {
                           controller.deleteProduct(controller.products[index]);
                           Get.snackbar(
-                            "Deleted!",
-                            "${controller.products[index].productName} deleted!",
+                            "${controller.products[index].name} Deleted!",
+                            "",
                             icon: Icon(Icons.message),
                             onTap: (_) {},
                             barBlur: 20,
@@ -68,31 +71,39 @@ class ShoppingPage extends StatelessWidget {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(
-                                      "${controller.products[index].productName}",
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                      ),
+                                    Image.file(
+                                      File(controller.products[index].image),
+                                      width: 64.0,
+                                      height: 64.0,
+                                      fit: BoxFit.cover,
                                     ),
                                     Text(
                                       "\$${controller.products[index].price}",
                                       style: TextStyle(
                                         fontSize: 20,
                                       ),
-                                    )
+                                    ),
                                   ],
                                 ),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    RaisedButton(
+                                    Text(
+                                      "${controller.products[index].name}",
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                    RaisedButton.icon(
                                       onPressed: () {
                                         cartController.addToCart(
                                             controller.products[index]);
                                       },
                                       color: Colors.blue,
                                       textColor: Colors.white,
-                                      child: Text("Add to Cart"),
+                                      icon: Icon(Icons.add_shopping_cart),
+                                      label: Text("Add to Cart"),
                                     )
                                   ],
                                 ),

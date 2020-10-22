@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_sqflite/controllers/cart_controller.dart';
@@ -36,14 +37,24 @@ class CartItemsScreen extends StatelessWidget {
                   direction: DismissDirection.endToStart,
                   onDismissed: (direction) {
                     controller.removeFromCart(product);
-                    Get.snackbar(
-                        "${product.productName.toUpperCase()} Deleted", "");
+                    Get.snackbar("${product.name.toUpperCase()} Deleted", "");
                   },
                   child: ListTile(
-                    leading: Icon(Icons.card_travel),
-                    title: Text(product.productName),
-                    subtitle: Text(product.productDescription),
-                    trailing: Text(product.price.toString()),
+                    leading: product.image != null && product.image != ""
+                        ? GestureDetector(
+                            child: Image.file(File(product.image)),
+                            onTap: () {
+                              Get.dialog(
+                                Image.file(File(product.image)),
+                                useSafeArea: false,
+                              );
+                              print(product.image);
+                            },
+                          )
+                        : Icon(Icons.dashboard_outlined),
+                    title: Text(product.name),
+                    subtitle: Text(product.description),
+                    trailing: Text("\$ " + product.price.toString()),
                   ),
                 );
               },
