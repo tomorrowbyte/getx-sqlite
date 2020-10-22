@@ -48,7 +48,7 @@ class ShoppingPage extends StatelessWidget {
                           controller.deleteProduct(controller.products[index]);
                           Get.snackbar(
                             "Deleted!",
-                            "${controller.products[index].productName} deleted!",
+                            "${controller.products[index].name} deleted!",
                             icon: Icon(Icons.message),
                             onTap: (_) {},
                             barBlur: 20,
@@ -69,7 +69,7 @@ class ShoppingPage extends StatelessWidget {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      "${controller.products[index].productName}",
+                                      "${controller.products[index].name}",
                                       style: TextStyle(
                                         fontSize: 20,
                                       ),

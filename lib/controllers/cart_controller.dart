@@ -36,7 +36,7 @@ class CartController extends GetxController {
 
   void resetCart() async {
     cartItems.forEach((product) async {
-      print("${product.id} ${product.productName}");
+      print("${product.id} ${product.name}");
       var result =
           await ProductDatabaseHelper.db.deleteProduct(product.id, cart: true);
       if (result == 1) {

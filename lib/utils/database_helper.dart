@@ -11,8 +11,8 @@ class ProductDatabaseHelper {
   String table = 'productTable';
   String cartTable = 'cartTable';
   String colId = 'id';
-  String colName = 'productName';
-  String colDescription = "productDescription";
+  String colName = 'name';
+  String colDescription = "description";
   String colPrice = "price";
 
   ProductDatabaseHelper._createInstance();

@@ -47,8 +47,8 @@ class ShoppingController extends GetxController {
 
   void handleAddButton() {
     var product = Product(
-      productName: nameController.value.text,
-      productDescription: descriptionController.value.text,
+      name: nameController.value.text,
+      description: descriptionController.value.text,
       price: double.parse(priceController.value.text),
     );
     nameController.value.text = "";
