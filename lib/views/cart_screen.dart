@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_sqflite/controllers/cart_controller.dart';
 
-class CartScreen extends StatelessWidget {
+class CartItemsScreen extends StatelessWidget {
   final cartController = Get.put(CartController());
 
   @override
@@ -39,7 +39,8 @@ class CartScreen extends StatelessWidget {
                   onDismissed: (direction) {
                     print(direction);
                     controller.removeFromCart(product);
-                    Get.snackbar("${product.productName.toUpperCase()} Deleted", "");
+                    Get.snackbar(
+                        "${product.productName.toUpperCase()} Deleted", "");
                   },
                   child: ListTile(
                     leading: Icon(Icons.card_travel),

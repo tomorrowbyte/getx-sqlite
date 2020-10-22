@@ -79,11 +79,11 @@ class ProductDatabaseHelper {
   }
 
   Future<int> deleteProduct(int id, {cart = false}) async {
-    print("Deleting Product with id: $id ");
+    // print("Deleting Product with id: $id ");
     var db = await this.database;
     int result = await db
         .delete(cart ? cartTable : table, where: '$colId = ?', whereArgs: [id]);
-    print("Delete result: $result");
+    // print("Delete result: $result");
     return result;
   }
 
