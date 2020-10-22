@@ -26,16 +26,22 @@ class ShoppingController extends GetxController {
     super.onInit();
   }
 
-  void fetchProducts() async {
+  fetchProducts() async {
     ProductDatabaseHelper.db
         .getProductList()
         .then((productList) => {products.value = productList});
   }
 
   void addProduct(Product product) {
-    ProductDatabaseHelper.db
-        .insertProduct(product)
-        .then((value) => products.add(product));
+    if (product.id != null) {
+      ProductDatabaseHelper.db.updateProduct(product).then((value) {
+        updateProduct(product);
+      });
+    } else {
+      ProductDatabaseHelper.db
+          .insertProduct(product)
+          .then((value) => products.add(product));
+    }
   }
 
   void deleteProduct(Product product) {
@@ -44,9 +50,13 @@ class ShoppingController extends GetxController {
         .then((_) => products.remove(product));
   }
 
-  void updateList(Product product) {
-    final index = products.indexOf(product);
-    products[index] = product;
+  void updateList(Product product) async {
+    var result = await fetchProducts();
+    if (result != null) {
+      final index = products.indexOf(product);
+      print(index);
+      products[index] = product;
+    }
   }
 
   void updateProduct(Product product) {
@@ -55,17 +65,30 @@ class ShoppingController extends GetxController {
         .then((value) => updateList(product));
   }
 
-  void handleAddButton() {
-    var product = Product(
-      name: nameController.value.text,
-      description: descriptionController.value.text,
-      price: double.parse(priceController.value.text),
-      image: imagePath.value,
-    );
+  void handleAddButton([id]) {
+    print(id);
+    if (id != null) {
+      var product = Product(
+        id: id,
+        name: nameController.value.text,
+        description: descriptionController.value.text,
+        price: double.parse(priceController.value.text),
+        image: imagePath.value,
+      );
+      addProduct(product);
+    } else {
+      var product = Product(
+        name: nameController.value.text,
+        description: descriptionController.value.text,
+        price: double.parse(priceController.value.text),
+        image: imagePath.value,
+      );
+      addProduct(product);
+    }
     nameController.value.text = "";
     descriptionController.value.text = "";
     priceController.value.text = "";
-    addProduct(product);
+    imagePath.value = "";
   }
 
   @override
