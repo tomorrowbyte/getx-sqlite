@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_sqflite/controllers/cart_controller.dart';
 
-class CartScreen extends StatelessWidget {
+class CartItemsScreen extends StatelessWidget {
   final cartController = Get.put(CartController());
 
   @override
@@ -15,16 +15,14 @@ class CartScreen extends StatelessWidget {
           ),
           actions: [
             IconButton(
-              icon: Icon(Icons.clear),
-              onPressed: () {
-                cartController.resetCart();
-              },
-            )
+              icon: Icon(Icons.delete_sweep_outlined),
+              onPressed: cartController.resetCart,
+            ),
+            IconButton(icon: Icon(Icons.add_shopping_cart), onPressed: () {}),
           ],
         ),
         body: GetX<CartController>(
           init: CartController(),
-          // initState: (_) {},
           builder: (controller) {
             return ListView.builder(
               itemCount: controller.cartItems.length,
@@ -37,9 +35,9 @@ class CartScreen extends StatelessWidget {
                   key: UniqueKey(),
                   direction: DismissDirection.endToStart,
                   onDismissed: (direction) {
-                    print(direction);
                     controller.removeFromCart(product);
-                    Get.snackbar("${product.productName.toUpperCase()} Deleted", "");
+                    Get.snackbar(
+                        "${product.productName.toUpperCase()} Deleted", "");
                   },
                   child: ListTile(
                     leading: Icon(Icons.card_travel),

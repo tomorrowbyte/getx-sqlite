@@ -124,7 +124,7 @@ class ShoppingPage extends StatelessWidget {
           builder: (controller) {
             return FloatingActionButton.extended(
               onPressed: () {
-                Get.to(CartScreen());
+                Get.to(CartItemsScreen());
               },
               label: Text(controller.count.toString()),
               icon: Icon(Icons.shopping_cart_outlined),
