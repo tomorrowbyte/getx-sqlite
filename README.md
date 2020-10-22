@@ -25,13 +25,13 @@ samples, guidance on mobile development, and a full API reference.
 
 
 ## Installation 
-[x] Clone locally the repository
-[x] Go to app directory and run <br>
-'''dart
+- [x] Clone locally the repository
+- [x] Go to app directory and run <br>
+'''python
 flutter pub get 
 '''
 
-[x] And then run
-'''dart
+- [x] And then run
+'''python
 flutter run
 '''
