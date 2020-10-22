@@ -34,6 +34,7 @@ class ShoppingController extends GetxController {
 
   void addProduct(Product product) {
     if (product.id != null) {
+      print("Inside add product and id is not null ${product.id}");
       ProductDatabaseHelper.db.updateProduct(product).then((value) {
         updateProduct(product);
       });
