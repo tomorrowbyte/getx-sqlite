@@ -85,14 +85,14 @@ class ShoppingPage extends StatelessWidget {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
-                                    RaisedButton(
+                                    RaisedButton.icon(
                                       onPressed: () {
                                         cartController.addToCart(
                                             controller.products[index]);
                                       },
                                       color: Colors.blue,
                                       textColor: Colors.white,
-                                      child: Text("Add to Cart"),
+                                      icon: Icon(Icons.add_shopping_cart), label: Text("Add to Cart"),
                                     )
                                   ],
                                 ),
