@@ -15,11 +15,13 @@ class CartItemsScreen extends StatelessWidget {
           ),
           actions: [
             IconButton(
-              icon: Icon(Icons.clear),
-              onPressed: () {
-                cartController.resetCart();
-              },
-            )
+              icon: Icon(Icons.delete_sweep_outlined),
+              onPressed: cartController.resetCart,
+            ),
+            IconButton(
+              icon: Icon(Icons.playlist_add_check_outlined),
+              onPressed: () {},
+            ),
           ],
         ),
         body: GetX<CartController>(
