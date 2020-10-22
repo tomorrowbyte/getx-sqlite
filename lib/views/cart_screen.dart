@@ -18,10 +18,7 @@ class CartItemsScreen extends StatelessWidget {
               icon: Icon(Icons.delete_sweep_outlined),
               onPressed: cartController.resetCart,
             ),
-            IconButton(
-              icon: Icon(Icons.add_shopping_cart),
-              onPressed: () {},
-            ),
+            IconButton(icon: Icon(Icons.add_shopping_cart), onPressed: () {}),
           ],
         ),
         body: GetX<CartController>(
