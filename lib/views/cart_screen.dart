@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_sqflite/controllers/cart_controller.dart';
@@ -39,7 +41,9 @@ class CartItemsScreen extends StatelessWidget {
                     Get.snackbar("${product.name.toUpperCase()} Deleted", "");
                   },
                   child: ListTile(
-                    leading: Icon(Icons.card_travel),
+                    leading: product.image != null && product.image != ""
+                        ? Image.file(File(product.image))
+                        : Icon(Icons.dashboard_outlined),
                     title: Text(product.name),
                     subtitle: Text(product.description),
                     trailing: Text(product.price.toString()),
