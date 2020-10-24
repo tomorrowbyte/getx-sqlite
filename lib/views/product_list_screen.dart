@@ -65,6 +65,9 @@ class ProductListScreen extends StatelessWidget {
             return FloatingActionButton.extended(
               onPressed: () {
                 Get.to(CartItemsScreen());
+                if(shoppingController.showSearchField.value){
+                  shoppingController.toggleShowSearch();
+                }
               },
               label: Text(controller.count.toString()),
               icon: Icon(Icons.shopping_cart_outlined),
