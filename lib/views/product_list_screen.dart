@@ -20,6 +20,15 @@ class ProductListScreen extends StatelessWidget {
           title: Obx(() => !shoppingController.showSearchField.value
               ? Text("Shopping App")
               : TextField(
+                  onChanged: (text) {
+                    if (text.length == 1) {
+                      Get.snackbar(
+                        "Warning",
+                        "This part is not implemented yet!",
+                        icon: Icon(Icons.warning),
+                      );
+                    }
+                  },
                   cursorColor: Colors.white,
                   decoration: InputDecoration(
                     fillColor: Colors.white,
@@ -65,7 +74,7 @@ class ProductListScreen extends StatelessWidget {
             return FloatingActionButton.extended(
               onPressed: () {
                 Get.to(CartItemsScreen());
-                if(shoppingController.showSearchField.value){
+                if (shoppingController.showSearchField.value) {
                   shoppingController.toggleShowSearch();
                 }
               },
