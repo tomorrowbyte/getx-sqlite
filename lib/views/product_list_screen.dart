@@ -23,9 +23,9 @@ class ProductListScreen extends StatelessWidget {
                   onChanged: (text) {
                     if (text.length == 1) {
                       Get.snackbar(
-                        "Warning",
+                        "Error!",
                         "This part is not implemented yet!",
-                        icon: Icon(Icons.warning),
+                        icon: Icon(Icons.error, color: Colors.red),
                       );
                     }
                   },
