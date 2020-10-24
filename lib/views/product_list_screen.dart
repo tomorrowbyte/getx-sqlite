@@ -15,10 +15,37 @@ class ProductListScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.tealAccent.shade700,
-          title: Text("Shopping App"),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          title: Obx(() => !shoppingController.showSearchField.value
+              ? Text("Shopping App")
+              : TextField(
+                  onChanged: (text) {
+                    if (text.length == 1) {
+                      Get.snackbar(
+                        "Warning",
+                        "This part is not implemented yet!",
+                        icon: Icon(Icons.warning),
+                      );
+                    }
+                  },
+                  cursorColor: Colors.white,
+                  decoration: InputDecoration(
+                    fillColor: Colors.white,
+                    icon: Icon(Icons.search_rounded),
+                    labelText: "Search",
+                  ),
+                )),
           centerTitle: true,
           actions: [
+            IconButton(
+              icon: Obx(
+                () => Icon(shoppingController.showSearchField.value
+                    ? Icons.search_off
+                    : Icons.search),
+              ),
+              onPressed: shoppingController.toggleShowSearch,
+            ),
             IconButton(
               icon: Icon(Icons.add),
               onPressed: () => Get.to(AddProductScreen()),
@@ -47,6 +74,9 @@ class ProductListScreen extends StatelessWidget {
             return FloatingActionButton.extended(
               onPressed: () {
                 Get.to(CartItemsScreen());
+                if (shoppingController.showSearchField.value) {
+                  shoppingController.toggleShowSearch();
+                }
               },
               label: Text(controller.count.toString()),
               icon: Icon(Icons.shopping_cart_outlined),
