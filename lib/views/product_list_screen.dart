@@ -21,7 +21,7 @@ class ProductListScreen extends StatelessWidget {
               ? Text("Shopping App")
               : TextField(
                   decoration: InputDecoration(
-                    icon: Icon(Icons.search_rounded,
+                    icon: Icon(Icons.search_rounded),
                     labelText: "Search",
                   ),
                 ),
