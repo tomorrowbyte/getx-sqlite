@@ -17,18 +17,24 @@ class ProductListScreen extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          title: !shoppingController.showSearchField.value
+          title: Obx(() => !shoppingController.showSearchField.value
               ? Text("Shopping App")
               : TextField(
+                  cursorColor: Colors.white,
                   decoration: InputDecoration(
+                    fillColor: Colors.white,
                     icon: Icon(Icons.search_rounded),
                     labelText: "Search",
                   ),
-                ),
+                )),
           centerTitle: true,
           actions: [
             IconButton(
-              icon: Icon(Icons.search),
+              icon: Obx(
+                () => Icon(shoppingController.showSearchField.value
+                    ? Icons.search_off
+                    : Icons.search),
+              ),
               onPressed: shoppingController.toggleShowSearch,
             ),
             IconButton(
