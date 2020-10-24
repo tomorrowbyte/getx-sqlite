@@ -10,6 +10,8 @@ class ShoppingController extends GetxController {
   var nameController = TextEditingController().obs;
   var descriptionController = TextEditingController().obs;
   var priceController = TextEditingController().obs;
+  final showSearchField = false.obs;
+
   var imagePath = "".obs;
 
   void getImage() async {
@@ -91,6 +93,11 @@ class ShoppingController extends GetxController {
     priceController.value.text = "";
     imagePath.value = "";
   }
+
+  void toggleShowSearch(){
+    showSearchField.value = !showSearchField.value;
+  }
+
 
   @override
   void onClose() {

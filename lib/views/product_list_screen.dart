@@ -15,10 +15,22 @@ class ProductListScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.tealAccent.shade700,
-          title: Text("Shopping App"),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          title: !shoppingController.showSearchField.value
+              ? Text("Shopping App")
+              : TextField(
+                  decoration: InputDecoration(
+                    icon: Icon(Icons.search_rounded,
+                    labelText: "Search",
+                  ),
+                ),
           centerTitle: true,
           actions: [
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: shoppingController.toggleShowSearch,
+            ),
             IconButton(
               icon: Icon(Icons.add),
               onPressed: () => Get.to(AddProductScreen()),
