@@ -4,17 +4,35 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_sqflite/controllers/cart_controller.dart';
 import 'package:getx_sqflite/controllers/product_controller.dart';
+import 'package:getx_sqflite/utils/localization_service.dart';
 import 'package:getx_sqflite/views/add_product_screen.dart';
 import 'package:getx_sqflite/views/cart_screen.dart';
 
 class ProductListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var langController = Get.put(LocalizationService());
+
     final shoppingController = Get.put(ShoppingController());
     final cartController = Get.put(CartController());
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          leading: PopupMenuButton(
+            icon: Icon(Icons.language),
+            onSelected: (lang) {
+              langController.changeLocale(lang);
+            },
+            itemBuilder: (context) {
+              return LocalizationService.langs.map((String lang) {
+                return PopupMenuItem(
+                  
+                  value: lang,
+                  child: Text(lang),
+                );
+              }).toList();
+            },
+          ),
           backgroundColor: Colors.transparent,
           elevation: 0,
           title: Obx(() => !shoppingController.showSearchField.value
@@ -188,7 +206,7 @@ class ProductList extends StatelessWidget {
                                 color: Colors.blue,
                                 textColor: Colors.white,
                                 icon: Icon(Icons.add_shopping_cart),
-                                label: Text("Add to Cart"),
+                                label: Text("Add to Cart".tr),
                               )
                             ],
                           ),
