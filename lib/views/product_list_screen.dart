@@ -18,7 +18,7 @@ class ProductListScreen extends StatelessWidget {
           backgroundColor: Colors.transparent,
           elevation: 0,
           title: Obx(() => !shoppingController.showSearchField.value
-              ? Text("Shopping App")
+              ? Text("title".tr)
               : TextField(
                   onChanged: (text) {
                     if (text.length == 1) {
@@ -59,9 +59,18 @@ class ProductListScreen extends StatelessWidget {
             GetX<CartController>(
               init: CartController(),
               builder: (controller) {
-                return Text(
-                  "Total Amount: \$ ${controller.totalPrice.toPrecision(2)}",
-                  style: TextStyle(fontSize: 32, color: Colors.white),
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Total Amount".tr,
+                      style: TextStyle(fontSize: 32, color: Colors.white),
+                    ),
+                    Text(
+                      ": \$ ${controller.totalPrice.toPrecision(2)}",
+                      style: TextStyle(fontSize: 32, color: Colors.white),
+                    ),
+                  ],
                 );
               },
             ),
