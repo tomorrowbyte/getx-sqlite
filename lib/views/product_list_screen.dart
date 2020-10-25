@@ -33,7 +33,7 @@ class ProductListScreen extends StatelessWidget {
                   decoration: InputDecoration(
                     fillColor: Colors.white,
                     icon: Icon(Icons.search_rounded),
-                    labelText: "Search",
+                    labelText: "Search".tr,
                   ),
                 )),
           centerTitle: true,
