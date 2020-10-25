@@ -5,4 +5,9 @@ const Map<String, String> faAF = {
   "Total Amount": "مجموع قیمت",
   "Search": "جستجو",
   "Delete": "حذف",
+  "Name": "نام",
+  "Description": "توضیحات",
+  "Price": "قیمت",
+  "Add Product":"اضافه کردن",
+  "Select Image": "انتخاب عکس",
 };

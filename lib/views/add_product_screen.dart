@@ -39,7 +39,7 @@ class AddProductScreen extends StatelessWidget {
               child: TextField(
                 decoration: InputDecoration(
                   icon: Icon(Icons.title_rounded),
-                  hintText: "Name",
+                  hintText: "Name".tr,
                   border: OutlineInputBorder(),
                 ),
                 controller: shoppingController.nameController.value,
@@ -52,7 +52,7 @@ class AddProductScreen extends StatelessWidget {
                 maxLines: 5,
                 decoration: InputDecoration(
                   icon: Icon(Icons.description),
-                  hintText: "Description",
+                  hintText: "Description".tr,
                   border: OutlineInputBorder(),
                 ),
                 controller: shoppingController.descriptionController.value,
@@ -65,7 +65,7 @@ class AddProductScreen extends StatelessWidget {
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                   icon: Icon(Icons.monetization_on_rounded),
-                  hintText: "Price",
+                  hintText: "Price.tr",
                   border: OutlineInputBorder(),
                 ),
                 controller: shoppingController.priceController.value,
@@ -82,7 +82,7 @@ class AddProductScreen extends StatelessWidget {
                   child: Obx(
                     () => Text(
                       shoppingController.imagePath.value == ""
-                          ? "Select Image"
+                          ? "Select Image".tr
                           : shoppingController.imagePath.value.substring(44),
                     ),
                   ),
@@ -96,7 +96,7 @@ class AddProductScreen extends StatelessWidget {
                 RaisedButton(
                   color: Colors.blue.shade700,
                   child: Text(
-                    "Add Product",
+                    "Add Product".tr,
                     style: TextStyle(color: Colors.white),
                   ),
                   onPressed: onAddProductScreenPress,

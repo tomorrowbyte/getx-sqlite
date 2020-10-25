@@ -5,4 +5,9 @@ const Map<String, String> enUS = {
   "Total Amount": "Total Amount",
   "Search": "Search",
   "Delete": "Delete",
+  "Name": "Name",
+  "Description": "Description",
+  "Price": "Price",
+  "Add Product":"Add Product",
+  "Select Image": "Select Image",
 };
