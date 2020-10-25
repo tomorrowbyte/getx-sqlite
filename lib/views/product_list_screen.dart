@@ -4,21 +4,38 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_sqflite/controllers/cart_controller.dart';
 import 'package:getx_sqflite/controllers/product_controller.dart';
+import 'package:getx_sqflite/utils/localization_service.dart';
 import 'package:getx_sqflite/views/add_product_screen.dart';
 import 'package:getx_sqflite/views/cart_screen.dart';
 
 class ProductListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var langController = Get.put(LocalizationService());
+
     final shoppingController = Get.put(ShoppingController());
     final cartController = Get.put(CartController());
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          leading: PopupMenuButton(
+            icon: Icon(Icons.language),
+            onSelected: (lang) {
+              langController.changeLocale(lang);
+            },
+            itemBuilder: (context) {
+              return LocalizationService.langs.map((String lang) {
+                return PopupMenuItem(
+                  value: lang,
+                  child: Text(lang),
+                );
+              }).toList();
+            },
+          ),
           backgroundColor: Colors.transparent,
           elevation: 0,
           title: Obx(() => !shoppingController.showSearchField.value
-              ? Text("Shopping App")
+              ? Text("title".tr)
               : TextField(
                   onChanged: (text) {
                     if (text.length == 1) {
@@ -33,7 +50,7 @@ class ProductListScreen extends StatelessWidget {
                   decoration: InputDecoration(
                     fillColor: Colors.white,
                     icon: Icon(Icons.search_rounded),
-                    labelText: "Search",
+                    labelText: "Search".tr,
                   ),
                 )),
           centerTitle: true,
@@ -59,9 +76,18 @@ class ProductListScreen extends StatelessWidget {
             GetX<CartController>(
               init: CartController(),
               builder: (controller) {
-                return Text(
-                  "Total Amount: \$ ${controller.totalPrice.toPrecision(2)}",
-                  style: TextStyle(fontSize: 32, color: Colors.white),
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Total Amount".tr,
+                      style: TextStyle(fontSize: 32, color: Colors.white),
+                    ),
+                    Text(
+                      ": \$ ${controller.totalPrice.toPrecision(2)}",
+                      style: TextStyle(fontSize: 32, color: Colors.white),
+                    ),
+                  ],
                 );
               },
             ),
@@ -179,7 +205,7 @@ class ProductList extends StatelessWidget {
                                 color: Colors.blue,
                                 textColor: Colors.white,
                                 icon: Icon(Icons.add_shopping_cart),
-                                label: Text("Add to Cart"),
+                                label: Text("Add to Cart".tr),
                               )
                             ],
                           ),

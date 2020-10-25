@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
+import 'package:getx_sqflite/utils/en_us.dart';
+import 'package:getx_sqflite/utils/fa_AF.dart';
+import 'package:getx_sqflite/utils/localization_service.dart';
 import 'package:getx_sqflite/views/product_list_screen.dart';
 
 void main() {
@@ -11,11 +14,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      locale: LocalizationService.locale,
+      fallbackLocale: LocalizationService.fallBackLocale,
+      translations: LocalizationService(),
       theme: ThemeData(
-       primaryColor: Colors.teal.shade600,
+        primaryColor: Colors.teal.shade600,
       ),
       title: 'My Shopp App',
-     home: ProductListScreen(),
+      home: ProductListScreen(),
     );
   }
 }

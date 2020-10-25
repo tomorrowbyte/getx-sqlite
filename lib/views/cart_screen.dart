@@ -12,11 +12,12 @@ class CartItemsScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            "Cart Items",
+            "Cart Items".tr,
           ),
           actions: [
             IconButton(
               icon: Icon(Icons.delete_sweep_outlined),
+              tooltip: "Delete".tr,
               onPressed: cartController.resetCart,
             ),
             IconButton(icon: Icon(Icons.add_shopping_cart), onPressed: () {}),
