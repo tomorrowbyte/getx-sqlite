@@ -26,7 +26,6 @@ class ProductListScreen extends StatelessWidget {
             itemBuilder: (context) {
               return LocalizationService.langs.map((String lang) {
                 return PopupMenuItem(
-                  
                   value: lang,
                   child: Text(lang),
                 );
