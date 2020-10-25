@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-import 'package:getx_sqflite/utils/en_us.dart';
-import 'package:getx_sqflite/utils/fa_AF.dart';
 import 'package:getx_sqflite/utils/localization_service.dart';
 import 'package:getx_sqflite/views/product_list_screen.dart';
 
