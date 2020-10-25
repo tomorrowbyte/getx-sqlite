@@ -65,7 +65,7 @@ class AddProductScreen extends StatelessWidget {
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                   icon: Icon(Icons.monetization_on_rounded),
-                  hintText: "Price.tr",
+                  hintText: "Price".tr,
                   border: OutlineInputBorder(),
                 ),
                 controller: shoppingController.priceController.value,
