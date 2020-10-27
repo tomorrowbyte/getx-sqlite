@@ -7,6 +7,7 @@ import 'package:getx_sqflite/controllers/product_controller.dart';
 import 'package:getx_sqflite/utils/localization_service.dart';
 import 'package:getx_sqflite/views/add_product_screen.dart';
 import 'package:getx_sqflite/views/cart_screen.dart';
+import 'package:getx_sqflite/views/settings.dart';
 
 class ProductListScreen extends StatelessWidget {
   @override
@@ -18,18 +19,10 @@ class ProductListScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          leading: PopupMenuButton(
-            icon: Icon(Icons.language),
-            onSelected: (lang) {
-              langController.changeLocale(lang);
-            },
-            itemBuilder: (context) {
-              return LocalizationService.langs.map((String lang) {
-                return PopupMenuItem(
-                  value: lang,
-                  child: Text(lang),
-                );
-              }).toList();
+          leading: IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: () {
+              Get.to(Settings());
             },
           ),
           backgroundColor: Colors.transparent,

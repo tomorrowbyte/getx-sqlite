@@ -4,7 +4,7 @@ import 'package:getx_sqflite/utils/en_us.dart';
 import 'package:getx_sqflite/utils/fa_AF.dart';
 
 class LocalizationService extends Translations {
-  static final locale = Locale("fa", "AF");
+  static final locale = Locale("en", "US");
 
   static final fallBackLocale = Locale("en", "US");
 
@@ -21,6 +21,7 @@ class LocalizationService extends Translations {
 
   void changeLocale(String lang) {
     final locale = _getLocaleFromLanguage(lang);
+    selectedLang.value = lang;
     Get.updateLocale(locale);
   }
 
