@@ -6,32 +6,31 @@ class Settings extends StatelessWidget {
   final langCtrl = Get.put(LocalizationService());
   List _buildList() {
     List<Widget> listItems = List();
-    listItems.add(Row(
-      children: [
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 10),
-          child: Text(
-            "Language".tr,
-            style: TextStyle(fontSize: 18),
-          ),
+    listItems.add(
+      ListTile(
+        leading: Text(
+          "Language".tr,
+          style: TextStyle(fontSize: 18),
         ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 10),
-          child: Obx(() => DropdownButton<String>(
-                items: LocalizationService.langs
-                    .map((lang) => DropdownMenuItem(
-                          child: Text(lang),
-                          value: lang,
-                        ))
-                    .toList(),
-                onChanged: (lang) {
-                  langCtrl.changeLocale(lang);
-                },
-                value: langCtrl.selectedLang.value,
-              )),
+        subtitle: DropdownButton<String>(
+          items: LocalizationService.langs
+              .map(
+                (lang) => DropdownMenuItem(
+                  key: UniqueKey(),
+                  child: Text(lang),
+                  value: lang,
+                ),
+              )
+              .toList(),
+          onChanged: (lang) {
+            langCtrl.changeLocale(lang);
+          },
+          value: langCtrl.selectedLang.value,
         ),
-      ],
-    ));
+        trailing: SizedBox(width: 60, child: Icon(Icons.language)),
+      ),
+    );
+    listItems.add(SizedBox(height: 6000,));
     return listItems;
   }
 
