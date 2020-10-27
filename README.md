@@ -4,7 +4,7 @@ A shopping app project using GetX and Sqflite. The Get package is really intrest
 wonderful to work with. 
 - Flutter made easy. 
 - It's easy to do state management.
-- Providing MVC pattern.
+- Provides MVC pattern.
 - Less code than flutter itself. 
 - And provides tons of other intresting functionalities. 
 
