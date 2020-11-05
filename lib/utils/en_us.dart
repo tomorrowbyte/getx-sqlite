@@ -13,5 +13,5 @@ const Map<String, String> enUS = {
   "Settings": "Settings",
   "Language": "Language",
   "drawer-subtitle": "Best App for Shopping",
-  "Welcome": "Welcome",
+  "Welcome": "Welcome to Shopping App",
 };

@@ -9,7 +9,7 @@ class MyDrawer extends StatelessWidget {
       child: ListView(
         children: [
           UserAccountsDrawerHeader(
-            accountName: Text("Welcome".tr),
+            accountName: Text("Welcome".tr, style: TextStyle(fontSize: 20),),
             accountEmail: Text("drawer-subtitle".tr),
           ),
           ListTile(
