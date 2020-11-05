@@ -6,31 +6,46 @@ class Settings extends StatelessWidget {
   final langCtrl = Get.put(LocalizationService());
   List _buildList() {
     List<Widget> listItems = List();
-    listItems.add(
-      ListTile(
-        leading: Text(
-          "Language".tr,
-          style: TextStyle(fontSize: 18),
-        ),
-        subtitle: DropdownButton<String>(
-          items: LocalizationService.langs
-              .map(
-                (lang) => DropdownMenuItem(
-                  key: UniqueKey(),
-                  child: Text(lang),
-                  value: lang,
-                ),
-              )
-              .toList(),
-          onChanged: (lang) {
-            langCtrl.changeLocale(lang);
-          },
-          value: langCtrl.selectedLang.value,
-        ),
-        trailing: SizedBox(width: 60, child: Icon(Icons.language)),
+    listItems
+        .add(Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+      Text("Language".tr),
+      FlatButton(
+        child: Text("فارسی"),
+        onPressed: () => langCtrl.changeLocale('فارسی'),
       ),
-    );
-    listItems.add(SizedBox(height: 6000,));
+      FlatButton(
+        child: Text("English"),
+        onPressed: () => langCtrl.changeLocale('English'),
+      )
+    ])
+            // ListTile(
+            // leading: Text(
+            // "Language".tr,
+            // style: TextStyle(fontSize: 18),
+            // ),
+            // subtitle: DropdownButton<String>(
+            // items:
+            // Container(
+            //   child: LocalizationService.langs
+            //       .map(
+            //         (lang) => DropdownMenuItem(
+            //           key: UniqueKey(),
+            //           child: Text(lang),
+            //           value: lang,
+            //         ),
+            //       )
+            //       .toList(),
+            //   onChanged: (lang) {
+            //     langCtrl.changeLocale(lang);
+            //   },
+            //   value: langCtrl.selectedLang.value,
+            // ),
+            // trailing: SizedBox(width: 60, child: Icon(Icons.language)),
+            // ),
+            );
+    listItems.add(SizedBox(
+      height: 700,
+    ));
     return listItems;
   }
 
