@@ -10,4 +10,6 @@ const Map<String, String> faAF = {
   "Price": "قیمت",
   "Add Product":"اضافه کردن",
   "Select Image": "انتخاب عکس",
+  "Settings":"تنظیمات",
+  "Language": "زبان",
 };

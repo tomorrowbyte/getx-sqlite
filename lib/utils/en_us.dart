@@ -10,4 +10,6 @@ const Map<String, String> enUS = {
   "Price": "Price",
   "Add Product":"Add Product",
   "Select Image": "Select Image",
+  "Settings":"Settings",
+  "Language": "Language",
 };
