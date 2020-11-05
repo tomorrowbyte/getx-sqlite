@@ -4,27 +4,27 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_sqflite/controllers/cart_controller.dart';
 import 'package:getx_sqflite/controllers/product_controller.dart';
-import 'package:getx_sqflite/utils/localization_service.dart';
+// import 'package:getx_sqflite/utils/localization_service.dart';
 import 'package:getx_sqflite/views/add_product_screen.dart';
 import 'package:getx_sqflite/views/cart_screen.dart';
-import 'package:getx_sqflite/views/settings.dart';
+import 'package:getx_sqflite/views/my_drawer.dart';
 
 class ProductListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var langController = Get.put(LocalizationService());
+    // var langController = Get.put(LocalizationService());
 
     final shoppingController = Get.put(ShoppingController());
     final cartController = Get.put(CartController());
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(Icons.settings),
-            onPressed: () {
-              Get.to(Settings());
-            },
-          ),
+          // leading: IconButton(
+          //   icon: Icon(Icons.settings),
+          //   onPressed: () {
+          //     Get.to(Settings());
+          //   },
+          // ),
           backgroundColor: Colors.transparent,
           elevation: 0,
           title: Obx(() => !shoppingController.showSearchField.value
@@ -62,6 +62,7 @@ class ProductListScreen extends StatelessWidget {
             )
           ],
         ),
+        drawer: MyDrawer(),
         backgroundColor: Colors.teal,
         body: Column(
           children: [

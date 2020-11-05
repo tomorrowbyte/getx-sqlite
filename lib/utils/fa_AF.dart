@@ -8,6 +8,10 @@ const Map<String, String> faAF = {
   "Name": "نام",
   "Description": "توضیحات",
   "Price": "قیمت",
-  "Add Product":"اضافه کردن",
+  "Add Product": "اضافه کردن",
   "Select Image": "انتخاب عکس",
+  "Settings": "تنظیمات",
+  "Language": "زبان",
+  "drawer-subtitle": "بهترین نرم افزار برای خرید",
+  "Welcome": "به سرای خرید خوش آمدید",
 };
