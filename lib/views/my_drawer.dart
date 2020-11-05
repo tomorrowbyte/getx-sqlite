@@ -9,13 +9,13 @@ class MyDrawer extends StatelessWidget {
       child: ListView(
         children: [
           UserAccountsDrawerHeader(
-            accountName: Text("Sebghat Yusuf"),
-            accountEmail: Text("SebghatYusuf@gmail.com"),
+            accountName: Text("Welcome".tr),
+            accountEmail: Text("drawer-subtitle".tr),
           ),
           ListTile(
             leading: Icon(Icons.settings),
-            title: Text("Settings"),
-            onTap: (){
+            title: Text("Settings".tr),
+            onTap: () {
               Get.to(Settings());
             },
           )

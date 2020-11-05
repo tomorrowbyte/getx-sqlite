@@ -12,4 +12,6 @@ const Map<String, String> faAF = {
   "Select Image": "انتخاب عکس",
   "Settings":"تنظیمات",
   "Language": "زبان",
+  "drawer-subtitle": "بهترین نرم افزار برای خرید",
+  "Welcome": "به سرای خرید خوش آمدید",
 };
