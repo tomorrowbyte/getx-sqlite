@@ -73,6 +73,7 @@ class Settings extends StatelessWidget {
       leading: Icon(Icons.report_problem),
       title: Text("Report Problem".tr),
       onTap: (){
+        openMail();
       }
     ));
     listItems.add(SizedBox(
