@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_sqflite/utils/localization_service.dart';
+import 'package:open_mail_app/open_mail_app.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Settings extends StatelessWidget {
   final langCtrl = Get.put(LocalizationService());
+
+  void openMail () async{
+    var result = await OpenMailApp.openMailApp();
+    if(!result.didOpen && !result.canOpen){
+      Get.snackbar("Warning", "No mail apps installed");
+    }
+  }
+
   List _buildList() {
     List<Widget> listItems = List();
     listItems.add(
