@@ -59,6 +59,13 @@ class Settings extends StatelessWidget {
       // trailing: SizedBox(width: 60, child: Icon(Icons.language)),
       // ),
     );
+    listItems.add(ListTile(
+      leading: Icon(Icons.report_problem),
+      title: Text("Report problem"),
+      onTap: (){
+        
+      }
+    ));
     listItems.add(SizedBox(
       height: 700,
     ));
