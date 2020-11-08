@@ -14,4 +14,5 @@ const Map<String, String> faAF = {
   "Language": "زبان",
   "drawer-subtitle": "بهترین نرم افزار برای خرید",
   "Welcome": "به سرای خرید خوش آمدید",
+  "Report Problem" : "گزارش خطا"
 };
