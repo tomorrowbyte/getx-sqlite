@@ -63,7 +63,7 @@ class Settings extends StatelessWidget {
       leading: Icon(Icons.report_problem),
       title: Text("Report problem"),
       onTap: (){
-        
+        debugPrint("Reporting the problem...");
       }
     ));
     listItems.add(SizedBox(
