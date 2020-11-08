@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_sqflite/utils/localization_service.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Settings extends StatelessWidget {
   final langCtrl = Get.put(LocalizationService());
@@ -61,9 +62,8 @@ class Settings extends StatelessWidget {
     );
     listItems.add(ListTile(
       leading: Icon(Icons.report_problem),
-      title: Text("Report problem"),
+      title: Text("Report Problem".tr),
       onTap: (){
-        debugPrint("Reporting the problem...");
       }
     ));
     listItems.add(SizedBox(
