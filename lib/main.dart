@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.teal.shade600,
       ),
+      darkTheme: ThemeData.dark(),
       title: 'My Shopp App',
       home: ProductListScreen(),
     );
