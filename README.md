@@ -26,7 +26,7 @@ samples, guidance on mobile development, and a full API reference.
 
 
 ## Installation 
-make sure you have installed flutter. [***Install Flutter***](https://flutter.dev/docs/get-started/install)
+Make sure you have installed flutter. [***Install Flutter***](https://flutter.dev/docs/get-started/install)
 1. Clone locally the repository
 2. Go to app directory and run `flutter pub get` 
 3. And then run `flutter run` 
