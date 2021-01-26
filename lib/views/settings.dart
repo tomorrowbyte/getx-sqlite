@@ -61,12 +61,9 @@ class Settings extends StatelessWidget {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
-            // floating: true,
             expandedHeight: 220,
             pinned: true,
-            // snap: true,
             elevation: 50,
-            // backgroundColor: Colors,
             flexibleSpace: FlexibleSpaceBar(
               background: Image.asset('assets/images/bg.jpg'),
               centerTitle: true,
