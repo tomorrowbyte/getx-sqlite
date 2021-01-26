@@ -12,43 +12,40 @@ import 'package:getx_sqflite/views/my_drawer.dart';
 class ProductListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // var langController = Get.put(LocalizationService());
-
     final shoppingController = Get.put(ShoppingController());
     final cartController = Get.put(CartController());
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          // leading: IconButton(
-          //   icon: Icon(Icons.settings),
-          //   onPressed: () {
-          //     Get.to(Settings());
-          //   },
-          // ),
           backgroundColor: Colors.transparent,
           elevation: 0,
-          title: Obx(() => !shoppingController.showSearchField.value
-              ? Text("title".tr)
-              : TextField(
-                  onChanged: (text) {
-                    if (text.length == 1) {
-                      Get.snackbar(
-                        "Error!",
-                        "This part is not implemented yet!",
-                        icon: Icon(Icons.error, color: Colors.red),
-                      );
-                    }
-                  },
-                  cursorColor: Colors.white,
-                  decoration: InputDecoration(
-                    fillColor: Colors.white,
-                    icon: Icon(Icons.search_rounded),
-                    labelText: "Search".tr,
+          // title property shows search field or app title
+          title: Obx(
+            () => !shoppingController.showSearchField.value
+                ? Text("title".tr)
+                : TextField(
+                    onChanged: (text) {
+                      if (text.length == 1) {
+                        Get.snackbar(
+                          "Error!",
+                          "This part is not implemented yet!",
+                          icon: Icon(Icons.error, color: Colors.red),
+                        );
+                      }
+                    },
+                    cursorColor: Colors.white,
+                    decoration: InputDecoration(
+                      fillColor: Colors.white,
+                      icon: Icon(Icons.search_rounded),
+                      labelText: "Search".tr,
+                    ),
                   ),
-                )),
+          ),
           centerTitle: true,
           actions: [
             IconButton(
+              // Obx handles change event, and listens to changes then set the new
+              // state based on the changed state.
               icon: Obx(
                 () => Icon(shoppingController.showSearchField.value
                     ? Icons.search_off
