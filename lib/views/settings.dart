@@ -12,6 +12,7 @@ class Settings extends StatelessWidget {
       Get.snackbar("Warning", "No mail apps installed");
     }
   }
+
   /// build list of items to show in sliver
   List _buildList() {
     List<Widget> listItems = [
