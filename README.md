@@ -11,7 +11,7 @@ wonderful to work with.
 - Less code than flutter itself. 
 - Also provides tons of other intresting functionalities. 
 
-[See official GetX repository](https://github.com/jonataslaw/getx).
+[Visit official `GetX` repository](https://github.com/jonataslaw/getx).
 
 
 ## Getting Started
