@@ -38,4 +38,4 @@ Make sure you have installed flutter. [***Install Flutter***](https://flutter.de
 ## Feedback 
 [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/Naereen/ama)
 <br>
-**<a href="mailto:sebghatyusuf@gmail.com">SEND EMAIL</a>**
+*<a href="mailto:sebghatyusuf@gmail.com">Contact</a>*
