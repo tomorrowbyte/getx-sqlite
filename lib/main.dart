@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:getx_sqflite/utils/localization_service.dart';
-import 'package:getx_sqflite/views/product_list_screen.dart';
+
+import 'views/product_list_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
       translations: LocalizationService(),
       theme: ThemeData(
         primaryColor: Colors.teal.shade600,
+        useMaterial3: true,
       ),
       darkTheme: ThemeData.dark(),
       title: 'My Shopp App',

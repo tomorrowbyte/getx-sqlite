@@ -4,26 +4,28 @@ import 'package:getx_sqflite/models/product.dart';
 import 'package:getx_sqflite/utils/database_helper.dart';
 import 'package:image_picker/image_picker.dart';
 
-class ShoppingController extends GetxController {
-  var picker = ImagePicker().obs;
-  var products = List<Product>().obs;
-  var nameController = TextEditingController().obs;
-  var descriptionController = TextEditingController().obs;
-  var priceController = TextEditingController().obs;
-  final showSearchField = false.obs;
+import '../models/product.dart';
 
-  var imagePath = "".obs;
+class ShoppingController extends GetxController {
+  var picker = ImagePicker();
+  List<Product> products = [];
+  TextEditingController nameController = TextEditingController();
+  TextEditingController descriptionController = TextEditingController();
+  TextEditingController priceController = TextEditingController();
+  bool showSearchField = false;
+
+  var imagePath = "";
 
   void getImage() async {
-    final pickedFile = await picker.value.getImage(source: ImageSource.gallery);
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
-      imagePath.value = pickedFile.path;
+      imagePath = pickedFile.path;
     }
   }
 
   @override
   void onInit() {
-    products.value = [];
+    products = [];
     fetchProducts();
     super.onInit();
   }
@@ -31,7 +33,7 @@ class ShoppingController extends GetxController {
   fetchProducts() async {
     ProductDatabaseHelper.db
         .getProductList()
-        .then((productList) => {products.value = productList});
+        .then((productList) => {products = productList});
   }
 
   void addProduct(Product product) {
@@ -73,31 +75,30 @@ class ShoppingController extends GetxController {
     if (id != null) {
       var product = Product(
         id: id,
-        name: nameController.value.text,
-        description: descriptionController.value.text,
-        price: double.parse(priceController.value.text),
-        image: imagePath.value,
+        name: nameController.text,
+        description: descriptionController.text,
+        price: double.parse(priceController.text),
+        image: imagePath,
       );
       addProduct(product);
     } else {
       var product = Product(
-        name: nameController.value.text,
-        description: descriptionController.value.text,
-        price: double.parse(priceController.value.text),
-        image: imagePath.value,
+        name: nameController.text,
+        description: descriptionController.text,
+        price: double.parse(priceController.text),
+        image: imagePath,
       );
       addProduct(product);
     }
-    nameController.value.text = "";
-    descriptionController.value.text = "";
-    priceController.value.text = "";
-    imagePath.value = "";
+    nameController.text = "";
+    descriptionController.text = "";
+    priceController.text = "";
+    imagePath = "";
   }
 
-  void toggleShowSearch(){
-    showSearchField.value = !showSearchField.value;
+  void toggleShowSearch() {
+    showSearchField = !showSearchField;
   }
-
 
   @override
   void onClose() {

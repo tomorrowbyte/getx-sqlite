@@ -20,10 +20,10 @@ class AddProductScreen extends StatelessWidget {
     if (Get.arguments != null) {
       var args = Get.arguments;
       print(args);
-      shoppingController.nameController.value.text = args.name;
-      shoppingController.descriptionController.value.text = args.description;
-      shoppingController.priceController.value.text = args.price.toString();
-      shoppingController.imagePath.value = args.image;
+      shoppingController.nameController.text = args.name;
+      shoppingController.descriptionController.text = args.description;
+      shoppingController.priceController.text = args.price.toString();
+      shoppingController.imagePath = args.image;
     }
     return SafeArea(
       child: Scaffold(
@@ -42,7 +42,7 @@ class AddProductScreen extends StatelessWidget {
                   hintText: "Name".tr,
                   border: OutlineInputBorder(),
                 ),
-                controller: shoppingController.nameController.value,
+                controller: shoppingController.nameController,
               ),
             ),
             Padding(
@@ -55,7 +55,7 @@ class AddProductScreen extends StatelessWidget {
                   hintText: "Description".tr,
                   border: OutlineInputBorder(),
                 ),
-                controller: shoppingController.descriptionController.value,
+                controller: shoppingController.descriptionController,
               ),
             ),
             Padding(
@@ -68,7 +68,7 @@ class AddProductScreen extends StatelessWidget {
                   hintText: "Price".tr,
                   border: OutlineInputBorder(),
                 ),
-                controller: shoppingController.priceController.value,
+                controller: shoppingController.priceController,
               ),
             ),
             Padding(
@@ -76,14 +76,14 @@ class AddProductScreen extends StatelessWidget {
                 horizontal: 25.0,
                 vertical: 10,
               ),
-              child: FlatButton.icon(
+              child: TextButton.icon(
                 icon: Icon(Icons.add_photo_alternate),
                 label: FittedBox(
                   child: Obx(
                     () => Text(
-                      shoppingController.imagePath.value == ""
+                      shoppingController.imagePath == ""
                           ? "Select Image".tr
-                          : shoppingController.imagePath.value.substring(44),
+                          : shoppingController.imagePath.substring(44),
                     ),
                   ),
                 ),
@@ -93,8 +93,8 @@ class AddProductScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                RaisedButton(
-                  color: Colors.blue.shade700,
+                ElevatedButton(
+                  // color: Colors.blue.shade700,
                   child: Text(
                     "Add Product".tr,
                     style: TextStyle(color: Colors.white),

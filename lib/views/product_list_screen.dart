@@ -21,7 +21,7 @@ class ProductListScreen extends StatelessWidget {
           elevation: 0,
           // title property shows search field or app title
           title: Obx(
-            () => !shoppingController.showSearchField.value
+            () => !shoppingController.showSearchField
                 ? Text("title".tr)
                 : TextField(
                     onChanged: (text) {
@@ -47,7 +47,7 @@ class ProductListScreen extends StatelessWidget {
               // Obx handles change event, and listens to changes then set the new
               // state based on the changed state.
               icon: Obx(
-                () => Icon(shoppingController.showSearchField.value
+                () => Icon(shoppingController.showSearchField
                     ? Icons.search_off
                     : Icons.search),
               ),
@@ -91,7 +91,7 @@ class ProductListScreen extends StatelessWidget {
             return FloatingActionButton.extended(
               onPressed: () {
                 Get.to(CartItemsScreen());
-                if (shoppingController.showSearchField.value) {
+                if (shoppingController.showSearchField) {
                   shoppingController.toggleShowSearch();
                 }
               },
@@ -188,13 +188,13 @@ class ProductList extends StatelessWidget {
                                   fontSize: 20,
                                 ),
                               ),
-                              RaisedButton.icon(
+                              ElevatedButton.icon(
                                 onPressed: () {
                                   cartController
                                       .addToCart(controller.products[index]);
                                 },
-                                color: Colors.blue,
-                                textColor: Colors.white,
+                                // color: Colors.blue,
+                                // textColor: Colors.white,
                                 icon: Icon(Icons.add_shopping_cart),
                                 label: Text("Add to Cart".tr),
                               )

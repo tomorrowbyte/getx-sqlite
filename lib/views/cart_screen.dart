@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_sqflite/controllers/cart_controller.dart';
@@ -52,7 +51,8 @@ class CartItemsScreen extends StatelessWidget {
                                   width: Get.width - 10,
                                   height: Get.height - 20,
                                   child: PhotoView(
-                                    initialScale: PhotoViewComputedScale.covered,
+                                    initialScale:
+                                        PhotoViewComputedScale.covered,
                                     minScale: 0.5,
                                     maxScale: 3.0,
                                     imageProvider: FileImage(

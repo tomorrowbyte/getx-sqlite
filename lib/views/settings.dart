@@ -32,11 +32,11 @@ class Settings extends StatelessWidget {
               Text("Language".tr),
             ],
           ),
-          FlatButton(
+          TextButton(
             child: Text("فارسی"),
             onPressed: () => langCtrl.changeLocale('فارسی'),
           ),
-          FlatButton(
+          TextButton(
             child: Text("English"),
             onPressed: () => langCtrl.changeLocale('English'),
           ),
