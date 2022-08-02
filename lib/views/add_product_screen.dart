@@ -79,12 +79,10 @@ class AddProductScreen extends StatelessWidget {
               child: TextButton.icon(
                 icon: Icon(Icons.add_photo_alternate),
                 label: FittedBox(
-                  child: Obx(
-                    () => Text(
-                      shoppingController.imagePath == ""
-                          ? "Select Image".tr
-                          : shoppingController.imagePath.substring(44),
-                    ),
+                  child: Text(
+                    shoppingController.imagePath == ""
+                        ? "Select Image".tr
+                        : shoppingController.imagePath.substring(44),
                   ),
                 ),
                 onPressed: shoppingController.getImage,
@@ -94,7 +92,6 @@ class AddProductScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                  // color: Colors.blue.shade700,
                   child: Text(
                     "Add Product".tr,
                     style: TextStyle(color: Colors.white),
