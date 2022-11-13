@@ -18,8 +18,7 @@ class AddProductScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (Get.arguments != null) {
-      var args = Get.arguments;
-      print(args);
+      final args = Get.arguments;
       shoppingController.nameController.text = args.name;
       shoppingController.descriptionController.text = args.description;
       shoppingController.priceController.text = args.price.toString();
@@ -40,7 +39,7 @@ class AddProductScreen extends StatelessWidget {
                 decoration: InputDecoration(
                   icon: Icon(Icons.title_rounded),
                   hintText: "Name".tr,
-                  border: OutlineInputBorder(),
+                  border: UnderlineInputBorder(),
                 ),
                 controller: shoppingController.nameController,
               ),
@@ -49,11 +48,10 @@ class AddProductScreen extends StatelessWidget {
               padding:
                   const EdgeInsets.symmetric(horizontal: 25.0, vertical: 10),
               child: TextField(
-                maxLines: 5,
                 decoration: InputDecoration(
                   icon: Icon(Icons.description),
                   hintText: "Description".tr,
-                  border: OutlineInputBorder(),
+                  border: UnderlineInputBorder(),
                 ),
                 controller: shoppingController.descriptionController,
               ),
@@ -66,7 +64,7 @@ class AddProductScreen extends StatelessWidget {
                 decoration: InputDecoration(
                   icon: Icon(Icons.monetization_on_rounded),
                   hintText: "Price".tr,
-                  border: OutlineInputBorder(),
+                  border: UnderlineInputBorder(),
                 ),
                 controller: shoppingController.priceController,
               ),
@@ -94,7 +92,6 @@ class AddProductScreen extends StatelessWidget {
                 ElevatedButton(
                   child: Text(
                     "Add Product".tr,
-                    style: TextStyle(color: Colors.white),
                   ),
                   onPressed: onAddProductScreenPress,
                 ),

@@ -9,7 +9,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -17,8 +16,24 @@ class MyApp extends StatelessWidget {
       fallbackLocale: LocalizationService.fallBackLocale,
       translations: LocalizationService(),
       theme: ThemeData(
-        primaryColor: Colors.teal.shade600,
+        primaryColor: Colors.teal,
         useMaterial3: true,
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: Colors.teal,
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.teal,
+          foregroundColor: Colors.white,
+        )),
+        appBarTheme: AppBarTheme(
+          actionsIconTheme: IconThemeData(
+            color: Colors.white,
+          ),
+        ),
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
       ),
       darkTheme: ThemeData.dark(),
       title: 'My Shopp App',

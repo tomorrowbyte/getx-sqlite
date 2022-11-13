@@ -27,6 +27,6 @@ class LocalizationService extends Translations {
     for (int i = 0; i < langs.length; i++) {
       if (lang == langs[i]) return locales[i];
     }
-    return Get.locale;
+    return Get.locale!;
   }
 }

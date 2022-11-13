@@ -4,15 +4,13 @@ import 'package:getx_sqflite/models/product.dart';
 import 'package:getx_sqflite/utils/database_helper.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../models/product.dart';
-
 class ShoppingController extends GetxController {
   var picker = ImagePicker();
-  List<Product> products = [];
+  RxList products = [].obs;
   TextEditingController nameController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   TextEditingController priceController = TextEditingController();
-  bool showSearchField = false;
+  RxBool showSearchField = false.obs;
 
   var imagePath = "";
 
@@ -25,7 +23,7 @@ class ShoppingController extends GetxController {
 
   @override
   void onInit() {
-    products = [];
+    products.value = [];
     fetchProducts();
     super.onInit();
   }
@@ -33,12 +31,11 @@ class ShoppingController extends GetxController {
   fetchProducts() async {
     ProductDatabaseHelper.db
         .getProductList()
-        .then((productList) => {products = productList});
+        .then((productList) => {products.value = productList});
   }
 
   void addProduct(Product product) {
     if (product.id != null) {
-      print("Inside add product and id is not null ${product.id}");
       ProductDatabaseHelper.db.updateProduct(product).then((value) {
         updateProduct(product);
       });
@@ -51,7 +48,7 @@ class ShoppingController extends GetxController {
 
   void deleteProduct(Product product) {
     ProductDatabaseHelper.db
-        .deleteProduct(product.id)
+        .deleteProduct(product.id!)
         .then((_) => products.remove(product));
   }
 
@@ -71,7 +68,6 @@ class ShoppingController extends GetxController {
   }
 
   void handleAddButton([id]) {
-    print(id);
     if (id != null) {
       var product = Product(
         id: id,
@@ -97,7 +93,7 @@ class ShoppingController extends GetxController {
   }
 
   void toggleShowSearch() {
-    showSearchField = !showSearchField;
+    showSearchField.value = !showSearchField.value;
   }
 
   @override

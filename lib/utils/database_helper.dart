@@ -6,8 +6,8 @@ import 'package:sqflite/sqflite.dart';
 import '../models/product.dart';
 
 class ProductDatabaseHelper {
-  static Database _productDb;
-  static ProductDatabaseHelper _productDatabaseHelper;
+  static Database? _productDb;
+  static ProductDatabaseHelper? _productDatabaseHelper;
 
   String table = 'productTable';
   String cartTable = 'cartTable';
@@ -25,14 +25,14 @@ class ProductDatabaseHelper {
     if (_productDatabaseHelper == null) {
       _productDatabaseHelper = ProductDatabaseHelper._createInstance();
     }
-    return _productDatabaseHelper;
+    return _productDatabaseHelper!;
   }
 
   Future<Database> get database async {
     if (_productDb == null) {
       _productDb = await initializeDatabase();
     }
-    return _productDb;
+    return _productDb!;
   }
 
   Future<Database> initializeDatabase() async {
@@ -92,7 +92,7 @@ class ProductDatabaseHelper {
     Database db = await this.database;
     List<Map<String, dynamic>> x =
         await db.rawQuery('SELECT COUNT (*) from $tableName');
-    int result = Sqflite.firstIntValue(x);
+    int result = Sqflite.firstIntValue(x) ?? 0;
     return result;
   }
 
