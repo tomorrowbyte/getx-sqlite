@@ -5,19 +5,19 @@ import 'package:getx_sqflite/utils/database_helper.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ShoppingController extends GetxController {
-  var picker = ImagePicker().obs;
-  var products = List<Product>().obs;
-  var nameController = TextEditingController().obs;
-  var descriptionController = TextEditingController().obs;
-  var priceController = TextEditingController().obs;
-  final showSearchField = false.obs;
+  var picker = ImagePicker();
+  RxList products = [].obs;
+  TextEditingController nameController = TextEditingController();
+  TextEditingController descriptionController = TextEditingController();
+  TextEditingController priceController = TextEditingController();
+  RxBool showSearchField = false.obs;
 
-  var imagePath = "".obs;
+  var imagePath = "";
 
   void getImage() async {
-    final pickedFile = await picker.value.getImage(source: ImageSource.gallery);
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
-      imagePath.value = pickedFile.path;
+      imagePath = pickedFile.path;
     }
   }
 
@@ -36,7 +36,6 @@ class ShoppingController extends GetxController {
 
   void addProduct(Product product) {
     if (product.id != null) {
-      print("Inside add product and id is not null ${product.id}");
       ProductDatabaseHelper.db.updateProduct(product).then((value) {
         updateProduct(product);
       });
@@ -49,7 +48,7 @@ class ShoppingController extends GetxController {
 
   void deleteProduct(Product product) {
     ProductDatabaseHelper.db
-        .deleteProduct(product.id)
+        .deleteProduct(product.id!)
         .then((_) => products.remove(product));
   }
 
@@ -69,35 +68,33 @@ class ShoppingController extends GetxController {
   }
 
   void handleAddButton([id]) {
-    print(id);
     if (id != null) {
       var product = Product(
         id: id,
-        name: nameController.value.text,
-        description: descriptionController.value.text,
-        price: double.parse(priceController.value.text),
-        image: imagePath.value,
+        name: nameController.text,
+        description: descriptionController.text,
+        price: double.parse(priceController.text),
+        image: imagePath,
       );
       addProduct(product);
     } else {
       var product = Product(
-        name: nameController.value.text,
-        description: descriptionController.value.text,
-        price: double.parse(priceController.value.text),
-        image: imagePath.value,
+        name: nameController.text,
+        description: descriptionController.text,
+        price: double.parse(priceController.text),
+        image: imagePath,
       );
       addProduct(product);
     }
-    nameController.value.text = "";
-    descriptionController.value.text = "";
-    priceController.value.text = "";
-    imagePath.value = "";
+    nameController.text = "";
+    descriptionController.text = "";
+    priceController.text = "";
+    imagePath = "";
   }
 
-  void toggleShowSearch(){
+  void toggleShowSearch() {
     showSearchField.value = !showSearchField.value;
   }
-
 
   @override
   void onClose() {

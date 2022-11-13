@@ -14,7 +14,7 @@ class Settings extends StatelessWidget {
   }
 
   /// build list of items to show in sliver
-  List _buildList() {
+  List<Widget> _buildList() {
     List<Widget> listItems = [
       Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -32,11 +32,11 @@ class Settings extends StatelessWidget {
               Text("Language".tr),
             ],
           ),
-          FlatButton(
+          TextButton(
             child: Text("فارسی"),
             onPressed: () => langCtrl.changeLocale('فارسی'),
           ),
-          FlatButton(
+          TextButton(
             child: Text("English"),
             onPressed: () => langCtrl.changeLocale('English'),
           ),

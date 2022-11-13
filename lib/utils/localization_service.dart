@@ -5,13 +5,11 @@ import 'package:getx_sqflite/utils/fa_AF.dart';
 
 class LocalizationService extends Translations {
   static final locale = Locale("en", "US");
-
   static final fallBackLocale = Locale("en", "US");
-
   static final langs = ['فارسی', 'English'];
-
   static final locales = [Locale("fa", "AF"), Locale("en", "US")];
-  var selectedLang = langs.first.obs;
+
+  String selectedLang = langs.first;
 
   @override
   Map<String, Map<String, String>> get keys => {
@@ -21,7 +19,7 @@ class LocalizationService extends Translations {
 
   void changeLocale(String lang) {
     final locale = _getLocaleFromLanguage(lang);
-    selectedLang.value = lang;
+    selectedLang = lang;
     Get.updateLocale(locale);
   }
 
@@ -29,6 +27,6 @@ class LocalizationService extends Translations {
     for (int i = 0; i < langs.length; i++) {
       if (lang == langs[i]) return locales[i];
     }
-    return Get.locale;
+    return Get.locale!;
   }
 }

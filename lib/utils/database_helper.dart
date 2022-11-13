@@ -1,12 +1,13 @@
 import 'dart:io';
 
-import 'package:getx_sqflite/models/product.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
+import '../models/product.dart';
+
 class ProductDatabaseHelper {
-  static Database _productDb;
-  static ProductDatabaseHelper _productDatabaseHelper;
+  static Database? _productDb;
+  static ProductDatabaseHelper? _productDatabaseHelper;
 
   String table = 'productTable';
   String cartTable = 'cartTable';
@@ -24,14 +25,14 @@ class ProductDatabaseHelper {
     if (_productDatabaseHelper == null) {
       _productDatabaseHelper = ProductDatabaseHelper._createInstance();
     }
-    return _productDatabaseHelper;
+    return _productDatabaseHelper!;
   }
 
   Future<Database> get database async {
     if (_productDb == null) {
       _productDb = await initializeDatabase();
     }
-    return _productDb;
+    return _productDb!;
   }
 
   Future<Database> initializeDatabase() async {
@@ -91,7 +92,7 @@ class ProductDatabaseHelper {
     Database db = await this.database;
     List<Map<String, dynamic>> x =
         await db.rawQuery('SELECT COUNT (*) from $tableName');
-    int result = Sqflite.firstIntValue(x);
+    int result = Sqflite.firstIntValue(x) ?? 0;
     return result;
   }
 
@@ -99,7 +100,7 @@ class ProductDatabaseHelper {
     var productMapList = await getProductMapList();
     int count = await getCount(table);
 
-    List<Product> productList = List<Product>();
+    List<Product> productList = <Product>[];
     for (int i = 0; i < count; i++) {
       productList.add(Product.fromMap(productMapList[i]));
     }
@@ -110,7 +111,7 @@ class ProductDatabaseHelper {
     var productMapList = await getCartMapList();
     int count = await getCount(cartTable);
 
-    List<Product> productList = List<Product>();
+    List<Product> productList = <Product>[];
     for (int i = 0; i < count; i++) {
       productList.add(Product.fromMap(productMapList[i]));
     }
