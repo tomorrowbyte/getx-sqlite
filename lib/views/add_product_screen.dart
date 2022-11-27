@@ -3,13 +3,13 @@ import 'package:get/get.dart';
 import 'package:getx_sqflite/controllers/product_controller.dart';
 
 class AddProductScreen extends StatelessWidget {
-  final shoppingController = Get.put(ShoppingController());
+  final controller = Get.put(ShoppingController());
 
   void onAddProductScreenPress() {
     if (Get.arguments != null) {
-      shoppingController.handleAddButton(Get.arguments.id);
+      controller.handleAddButton(Get.arguments.id);
     } else {
-      shoppingController.handleAddButton();
+      controller.handleAddButton();
     }
 
     Get.back();
@@ -19,10 +19,10 @@ class AddProductScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     if (Get.arguments != null) {
       final args = Get.arguments;
-      shoppingController.nameController.text = args.name;
-      shoppingController.descriptionController.text = args.description;
-      shoppingController.priceController.text = args.price.toString();
-      shoppingController.imagePath = args.image;
+      controller.nameController.text = args.name;
+      controller.descriptionController.text = args.description;
+      controller.priceController.text = args.price.toString();
+      controller.imagePath = args.image;
     }
     return SafeArea(
       child: Scaffold(
@@ -41,7 +41,7 @@ class AddProductScreen extends StatelessWidget {
                   hintText: "Name".tr,
                   border: UnderlineInputBorder(),
                 ),
-                controller: shoppingController.nameController,
+                controller: controller.nameController,
               ),
             ),
             Padding(
@@ -53,7 +53,7 @@ class AddProductScreen extends StatelessWidget {
                   hintText: "Description".tr,
                   border: UnderlineInputBorder(),
                 ),
-                controller: shoppingController.descriptionController,
+                controller: controller.descriptionController,
               ),
             ),
             Padding(
@@ -66,7 +66,7 @@ class AddProductScreen extends StatelessWidget {
                   hintText: "Price".tr,
                   border: UnderlineInputBorder(),
                 ),
-                controller: shoppingController.priceController,
+                controller: controller.priceController,
               ),
             ),
             Padding(
@@ -78,12 +78,12 @@ class AddProductScreen extends StatelessWidget {
                 icon: Icon(Icons.add_photo_alternate),
                 label: FittedBox(
                   child: Text(
-                    shoppingController.imagePath == ""
-                        ? "Select Image".tr
-                        : shoppingController.imagePath.substring(44),
+                    controller.imagePath.isEmpty
+                        ? "Pick Image"
+                        : controller.imagePath.substring(0, 44),
                   ),
                 ),
-                onPressed: shoppingController.getImage,
+                onPressed: controller.pickImage,
               ),
             ),
             Row(

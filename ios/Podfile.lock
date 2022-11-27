@@ -12,6 +12,27 @@ PODS:
   - sqflite (0.0.2):
     - Flutter
     - FMDB (>= 2.7.5)
+  - Stripe (22.8.2):
+    - Stripe/Stripe3DS2 (= 22.8.2)
+    - StripeApplePay (= 22.8.2)
+    - StripeCore (= 22.8.2)
+    - StripeUICore (= 22.8.2)
+  - Stripe/Stripe3DS2 (22.8.2):
+    - StripeApplePay (= 22.8.2)
+    - StripeCore (= 22.8.2)
+    - StripeUICore (= 22.8.2)
+  - stripe_ios (0.0.1):
+    - Flutter
+    - Stripe (~> 22.8.1)
+    - StripeFinancialConnections (~> 22.8.1)
+  - StripeApplePay (22.8.2):
+    - StripeCore (= 22.8.2)
+  - StripeCore (22.8.2)
+  - StripeFinancialConnections (22.8.2):
+    - StripeCore (= 22.8.2)
+    - StripeUICore (= 22.8.2)
+  - StripeUICore (22.8.2):
+    - StripeCore (= 22.8.2)
   - url_launcher_ios (0.0.1):
     - Flutter
 
@@ -21,11 +42,17 @@ DEPENDENCIES:
   - open_mail_app (from `.symlinks/plugins/open_mail_app/ios`)
   - path_provider_ios (from `.symlinks/plugins/path_provider_ios/ios`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
+  - stripe_ios (from `.symlinks/plugins/stripe_ios/ios`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
 
 SPEC REPOS:
   trunk:
     - FMDB
+    - Stripe
+    - StripeApplePay
+    - StripeCore
+    - StripeFinancialConnections
+    - StripeUICore
 
 EXTERNAL SOURCES:
   Flutter:
@@ -38,6 +65,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/path_provider_ios/ios"
   sqflite:
     :path: ".symlinks/plugins/sqflite/ios"
+  stripe_ios:
+    :path: ".symlinks/plugins/stripe_ios/ios"
   url_launcher_ios:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
 
@@ -48,8 +77,14 @@ SPEC CHECKSUMS:
   open_mail_app: 794172f6a22cd16319d3ddaf45e945b2f74952b0
   path_provider_ios: 14f3d2fd28c4fdb42f44e0f751d12861c43cee02
   sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
+  Stripe: 9b02a044432c68a3b63694e4d09c6b30c2c8dfef
+  stripe_ios: 8ad17b19d7d2189d7c19fd15d9ecffeca696390f
+  StripeApplePay: 1b2dca823c710b7f09667e1b7d9290008dd54bec
+  StripeCore: c03842e8c9feed545ac5976efe2cc1429d5ba553
+  StripeFinancialConnections: 2aef6c41e26aeb6b93ee48e7d7933ad73b01f35d
+  StripeUICore: 3efbad959661e9f3e9ee1855c84a21747c10f285
   url_launcher_ios: 839c58cdb4279282219f5e248c3321761ff3c4de
 
-PODFILE CHECKSUM: ef19549a9bc3046e7bb7d2fab4d021637c0c58a3
+PODFILE CHECKSUM: cc1f88378b4bfcf93a6ce00d2c587857c6008d3b
 
 COCOAPODS: 1.11.3

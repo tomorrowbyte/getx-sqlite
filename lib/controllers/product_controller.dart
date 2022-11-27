@@ -14,10 +14,14 @@ class ShoppingController extends GetxController {
 
   var imagePath = "";
 
-  void getImage() async {
-    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
-    if (pickedFile != null) {
-      imagePath = pickedFile.path;
+  void pickImage() async {
+    try {
+      final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+      if (pickedFile != null) {
+        imagePath = pickedFile.path;
+      }
+    } catch (e) {
+      print(e);
     }
   }
 
