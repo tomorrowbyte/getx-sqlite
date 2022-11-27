@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_sqflite/controllers/cart_controller.dart';
+import 'package:getx_sqflite/views/checkout_screen.dart';
 import 'package:photo_view/photo_view.dart';
 
 class CartItemsScreen extends StatelessWidget {
@@ -21,7 +22,13 @@ class CartItemsScreen extends StatelessWidget {
               tooltip: "Delete".tr,
               onPressed: cartController.resetCart,
             ),
-            IconButton(icon: Icon(Icons.add_shopping_cart), onPressed: () {}),
+            IconButton(
+              tooltip: 'Pay',
+              icon: Icon(Icons.payment),
+              onPressed: () {
+                Get.to(() => CheckoutScreen());
+              },
+            ),
           ],
         ),
         body: GetX<CartController>(

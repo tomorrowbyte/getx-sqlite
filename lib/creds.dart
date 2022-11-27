@@ -1,0 +1,2 @@
+const stripePK =
+    'pk_test_51M8URZLFyk91eYwbSDHl1z9tnwqKEhatiMnCsskNyBlQz6bH2bxe78Op8p0SFMtqq28Ihhd6IytTEcQFNKtAGiqh00qXsYqnwj';

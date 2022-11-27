@@ -10,6 +10,7 @@ wonderful to work with. it has several cons:
 - Provides MVC pattern
 - Less code than flutter itself 
 - And tons of other intresting functionalities
+- Stripe payment integration (in-progress)
 
 [Visit official `GetX` repository](https://github.com/jonataslaw/getx).
 
